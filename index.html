@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head onload="document.">
+
+    <link rel="stylesheet" href="projectStyle.css">
+
+    <title>Hello, world!</title>
+
+  </head>
+
+  <body>
+
+	<div id="header">
+		<h1 id=mainTitle>My Page!</h1>
+	</div>
+
+  	<div id=container>
+	  	<div id="sect1"> <!- first block(links) ->
+	  		<h2>Links to cool pages</h2>
+	  		<ul>
+	  			<li><a href="https://www.w3schools.com/colors/colors_picker.asp">Color picker</a></li>
+
+	  			<li><a href="https://en.wikipedia.org/wiki/Cat">Cat Wiki</a></li>
+
+	  			<li><a href="https://thecatsite.com/">The Cat Site</a></li>
+
+	  			<li><a href="asciiPage.html"><strong>My Ascii Game!</strong></a></li>
+	  		</ul>
+	  	</div>
+	  	<div id="sect2"> <!- block 2(cow cat) ->
+	  		<h2 id="catImg">Cow cat</h2>
+	  		<img src="http://i.dailymail.co.uk/i/pix/2012/06/22/article-2163232-13BB4A21000005DC-80_634x472.jpg">
+	  	</div>
+
+
+	  	<div id="sect3"> <!- the third block(calculator) ->
+
+	  		<strong>Calculator</strong>
+	  		<button id = "calCls" onclick="cls();">CLS</button>
+	  		<button id = "neg" onclick = "neg();">+/-</button>
+	  		<br><br><br>
+	  		<h2 id="calculatorDisplay">0</h2>
+	  		
+	  		<button id = "cal+" onclick="plus();">+</button>
+	  		<button id = "cal-" onclick="minus();">-</button>
+	  		<button id = "calx" onclick="multiply();">x</button>
+	  		<button id = "cal/" onclick="divide();">÷</button>
+
+	  		<br>
+
+	  		<button id = "cal1" onclick="cal1();">1</button>
+	  		<button id = "cal2" onclick="cal2();">2</button>
+	  		<button id = "cal3" onclick="cal3();">3</button>
+	  		<button id = "calSin" onclick="sin();">Sin</button>
+
+	  		<br>
+  		
+	  		<button id = "cal4" onclick="cal4();">4</button>
+	  		<button id = "cal5" onclick="cal5();">5</button>
+	  		<button id = "cal6" onclick="cal6();">6</button>
+	  		<button id = "calCos" onclick="cos();">Cos</button>
+
+	  		<br>
+ 
+	  		<button id = "cal7" onclick="cal7();">7</button>
+	  		<button id = "cal8" onclick="cal8();">8</button>
+	  		<button id = "cal9" onclick="cal9();">9</button>
+	  		<button id = "calTan" onclick="tan();">Tan</button>
+	  		
+	  		<br>
+
+	  		<button id = "calBack" onclick = "back();"><--</button>
+	  		<button id = "cal0" onclick="cal0();">0</button>
+	  		<button id = "calDec" onclick = "calDec();">*</button>
+	  		<button id = "calEqual" onclick = "equals();">=</button>
+
+	  	</div>
+  	</div>
+
+
+
+  	<div id="footer">
+  		<h3><strong>this footer is great!</strong></h3>
+  	</div>
+
+  	<script src="myScript.js"></script>
+
+  </body>
+</html>

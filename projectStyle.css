@@ -1,0 +1,93 @@
+
+body {
+	margin: 0;
+	background: #333;
+}
+
+#header {
+	width: 96%;
+	margin: 20px 2% 20px 2%;
+	height: 70px;
+	background: orange;
+}
+
+#mainTitle {
+	padding: 15px 0 0 30px;
+}
+
+#container {
+	width: 96%;
+	height: 800px;
+	margin: 20px 2% 20px 2%;
+}
+
+
+#sect1 {
+	padding: 10px 0px 20px 2%;
+	margin: 0 1% 1% 0;
+
+	background: #d45c;
+	width: 47%;
+	height: 300px;
+	float: left;
+}
+
+#sect2 {
+	padding: 10px 0px 20px 2%;
+	margin: 0 0 1% 1%;
+
+	background: #dab;
+	width: 47%;
+	height: 300px;
+	float: left;
+}
+
+img {
+	width: 300px; 
+	height: auto;
+}
+
+
+#sect3 {
+	padding: 10px 0px 20px 2%;
+	margin: 1% 0 0 0;
+
+	background: #088bdb;
+	width: 98%;
+	height: 440px;
+	float: left;
+}
+
+#calculatorDisplay {
+	width: 93%;
+	background: white;
+}
+
+#sect3 button {
+	padding: 15px 5px;
+	margin: 5px 0.5%;
+	width: 22%;
+}
+
+#calCls {
+	float: right;
+	margin: 5%;
+}
+
+#neg {
+	float: right;
+}
+
+
+#footer {
+	width: 96%;
+	margin: 20px 2%;
+	height: 90px;
+	background: green;
+	color: black;
+	float: right;
+}
+
+#footer h3 {
+	margin: 2%;
+}
