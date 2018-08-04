@@ -1,0 +1,34 @@
+html, body {
+  height: 100%;
+  background: #333;
+  margin: 20px;
+}
+
+.tf {
+	background: #000;
+	color: #fff;
+	padding: 10px;
+	width: 8.52%;
+	float: left;
+}
+
+#generate {
+	float: left;
+	padding: 10px;
+}
+
+#bar {
+	width: 97%;
+	height: auto;
+	padding-bottom: 100px;
+}
+
+#default {
+	float: left;
+	padding: 10px;
+}
+
+#save {
+	float: left;
+	padding: 10px;
+}

@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.js"></script>
+		<link rel="stylesheet" type="text/css" href="myp5.css">
+	</head>
+
+	<body>
+		<a href = "../index.html">Back</a><br>
+
+		<script src="myp5Script.js"></script>
+
+		<div id="bar">
+
+			<input type="text" class="tf" id="widthInput" placeholder="Width" />
+
+	        <input type="text" class="tf" id="heightInput" placeholder="Height" />
+
+	        <input type="text" class="tf" id="ballDistXInput" placeholder="Offset-x" />
+
+	        <input type="text" class="tf" id="ballDistYInput" placeholder="Offset-y" />
+
+	        <input type="text" class="tf" id="octavesInput" placeholder="Octaves" />
+
+	        <input type="text" class="tf" id="dropoffInput" placeholder="Dropoff" />
+
+	        <input type="text" class="tf" id="zoomXInput" placeholder="ZoomX" />
+
+	        <input type="text" class="tf" id="zoomYInput" placeholder="ZoomY" />
+
+	        <input type="text" class="tf" id="drawTimeInput" placeholder="Draw Time" />
+
+	        <input type="text" class="tf" id="lengthInput" placeholder="Speed" />
+
+	        <input type="text" class="tf" id="weightInput" placeholder="Weight" />
+
+	        <input type="text" class="tf" id="rInput" placeholder="r" />
+
+	        <input type="text" class="tf" id="gInput" placeholder="g" />
+
+	        <input type="text" class="tf" id="bInput" placeholder="b" />
+
+	        <input type="text" class="tf" id="aInput" placeholder="a" />
+
+	        <input type="text" class="tf" id="backrInput" placeholder="background r" />
+
+	        <input type="text" class="tf" id="backgInput" placeholder="background g" />
+
+	        <input type="text" class="tf" id="backbInput" placeholder="background b" />
+
+	        <button id="generate" onclick="generateNewCanvas();">Generate</button>
+	        <button id="default" onclick="setToDefaults();">Default</button>
+	        <button id="save" onclick="save('flowField.png');">Save Image</button>
+	        <br>
+
+    	</div>
+	</body>
+
+</html>
