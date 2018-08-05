@@ -36,6 +36,8 @@ var backr = 0;
 var backg = 0;
 var balckb = 0;
 
+var currentSeed = 1;
+
 var balls = new Array();
 
 function perColor(x, y){
@@ -82,18 +84,34 @@ class Ball{
 		//point(this.x, this.y);
 		//rect(this.x, this.y, lineWeight, lineWeight);
 	}
+
+	deleteOffScreen(){
+		var off = false;
+		if (this.x > resolutionX + 200) off = true;
+		if (this.y > resolutionY + 200) off = true;
+		if (this.x < -200) off = true;
+		if (this.y < -200) off = true;
+		return off;
+	}
 }
 
 function createBall(x, y){
 	balls.push(new Ball(x, y));
 }
 
+var mouseBalls = [];
+function createBallMouse(){
+	mouseBalls.push(new Ball(mouseX, mouseY));
+}
+
 var length = 5;
 var noise1;
 var cnv;
+
 function setup(){
+
 	cnv = createCanvas(resolutionX, resolutionY);
-	cnv.mousePressed(createBall);
+	cnv.mousePressed(createBallMouse);
 	
 	generateNewCanvas();
 
@@ -106,13 +124,32 @@ function draw(){
 	itter++;
 	if (itter < timeDrawing){
 		for (var i = 0; i < balls.length; i++){
+			if (balls[i].deleteOffScreen()){
+				balls.splice(i, 1);
+				i--;
+			}
+		}
+		for (var i = 0; i < balls.length; i++){
 			balls[i].update();
 		}
 	}
+
+	for (var i = 0; i < mouseBalls.length; i++){
+		if (mouseBalls[i].deleteOffScreen()){
+			mouseBalls.splice(i, 1);
+			i--;
+		}
+	}
+	for (var i = 0; i < mouseBalls.length; i++){
+		mouseBalls[i].update();
+	}
+	
+
 }
 
 
 function generateNewCanvas(){
+	noiseSeed(currentSeed);
 	itter = 0;
 	resolutionX = parseInt(document.getElementById("widthInput").value);
 	resolutionY = parseInt(document.getElementById("heightInput").value);
@@ -141,6 +178,7 @@ function generateNewCanvas(){
 	noiseDetail1 = parseInt(document.getElementById("octavesInput").value);
 	noiseDetail2 = parseInt(document.getElementById("dropoffInput").value);
 
+	mouseBalls = [];
 	balls = [];
 
 	noiseDetail(noiseDetail, noiseDetail2);
@@ -183,4 +221,8 @@ function setToDefaults(){
 
 	document.getElementById("octavesInput").value = 10;
 	document.getElementById("dropoffInput").value = 0.02;
+}
+
+function setNewSeed(){
+	currentSeed = random() * 10000000;
 }

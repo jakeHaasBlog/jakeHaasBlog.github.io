@@ -4,6 +4,10 @@ html, body {
   margin: 20px;
 }
 
+#title {
+	color: #fff;
+}
+
 .tf {
 	background: #000;
 	color: #fff;
@@ -20,7 +24,12 @@ html, body {
 #bar {
 	width: 97%;
 	height: auto;
-	padding-bottom: 100px;
+	padding-bottom: 10px;
+}
+
+
+button {
+	width: 8.52%;
 }
 
 #default {
@@ -31,4 +40,18 @@ html, body {
 #save {
 	float: left;
 	padding: 10px;
+}
+
+#seed {
+	float: left;
+	padding: 10px;
+}
+
+
+#topText {
+	color: #fff;
+	margin: 0;
+	padding-bottom: 0;
+	width: 99%;
+	height: auto;
 }
