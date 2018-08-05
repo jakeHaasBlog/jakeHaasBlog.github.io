@@ -14,6 +14,7 @@ html, body {
 	padding: 10px;
 	width: 8.52%;
 	float: left;
+	margin-bottom: 1%;
 }
 
 #generate {
@@ -30,6 +31,8 @@ html, body {
 
 button {
 	width: 8.52%;
+	margin-left: 1%;
+	margin-bottom: 1%;
 }
 
 #default {
@@ -54,4 +57,33 @@ button {
 	padding-bottom: 0;
 	width: 99%;
 	height: auto;
+}
+
+
+#ballDistXInput {
+	margin-left: 1%;
+}
+#ballDistYInput {
+	margin-right: 1%;
+}
+
+#zoomXInput {
+	margin-left: 1%;
+}
+
+#drawTimeInput {
+	margin-right: 1%;
+	margin-left: 1%;
+}
+
+#weightInput {
+	margin-left: 1%;
+}
+
+#backrInput {
+	margin-left: 1%;
+}
+
+#generate {
+	margin-left: 2%;
 }
