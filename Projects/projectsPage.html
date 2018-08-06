@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="projectsPage.css">
+	</head>
+	<body>
+		<div id="projectDiv">
+			<div id="titleDiv">
+				<h1 id="title">Jake Haas Blog</h1>
+				<h3 id="subtitle">A Student Perspective of computer science</h3>
+			</div>
+			<div id="headerSelection">
+				<a class="headerSelectionItem" href="../index.html">Home</a>
+				<a class="headerSelectionItem" href="../Blogs/blogsPage.html">Blogs</a>
+				<a class="headerSelectionItem" id="selfLink">Projects</a>
+				<a class="headerSelectionItem" href="../Tutorials/tutorialsPage.html">Tutorials</a>
+			</div>
+
+			<br>
+			<div class = projectTemplate>
+				<h3><a class="ProjTitle" href="asciiGame/asciiPage.html">ASCII Maze</a></h3>
+				<img class="thumbnail" src="../Projects/thumbnails/asciiThumbnail.PNG">
+				<div class="indentedText">
+					This is the first project that I decided to take on with javascript. I thought it would be a good place to start because it incorperated many fundimental programming consepts such as arrays, object oriented programming, keyboard input, loops, and javascript text-nodes, and allowed me to become more familliar with the strange syntax of javascript.<br><br>
+					One majour challenge I faced with this project was figuring out text nodes. Before I took on this challenge I had no idea what a text node in javascript was, and when I started the project I threw together the data structures neccisary to hold the rgb values and the ASCII values of every character in a multi-dimentional array without knowing how to display them. On top of that I had programmed the arrays incorrectly, when I initialized the arrays to hold an ASCIIchar instance(from a class I made called ASCIIchar) I had initialized them as myarray[x][y] = new ASCIIchar(); when it was really supposed to be myarray[x][y] = new ASCIIchar;. I used a text editor called <a href="https://www.sublimetext.com/3">Sublime Text</a>(highly recomend btw) and did not know how to get error messages, so when I ran my program and nothing happened I unknowingly had two errors. Eventually I realized how to initialize my arrays properly and that my display function was not working correctly. This befundled me for a while because when I was using Java swing previously there were elements called JLables that supported html that would have worked with the code I was using. The real issue ended up being that I was using a textArea which does not support innerHtml and used a "div" instaid. In the tutorial for this project I cover how I should have done it in the first place.
+				</div>
+			</div>
+
+			<div class="projectTemplate">
+				<h3><a class="ProjTitle" href="perlinNoise/myp5.html">Perlin Noise Flow</a></h3>
+				<img class="thumbnail" src="thumbnails/flowFieldExample.png">
+				<div class="indentedText">
+					
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>
