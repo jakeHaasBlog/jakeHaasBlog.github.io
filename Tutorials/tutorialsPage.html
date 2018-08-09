@@ -17,6 +17,32 @@
 				<a class="headerSelectionItem" id=selfLink>Tutorials</a>
 			</div>
 
+			<div class="tutorialDiv">
+				<br><br>
+				<h3 class="tutorialTitle">Ascii Games in General</h3>
+				<div class="tutorialText">
+					So this is a pretty general tutorial where I kinda go over everything you need to know in order to make ascii games in almost any programming language, although the source code will be given in javascript and the tutorial will go through that code step-by-step I am adding a snippet of Java in the end for people who would rather use that but don't know how to display everything. The tutorial is split up into three parts: <br>
+					<div class="threePart">
+						<div class="tutorialTitle"><a href="">Storing your data</a></div>
+						<br>
+						<div class="tutorialText">
+							So this part is probably pretty self explanitory but I need to write something in this section to make it look good anyway so yeah... Anyway, we will start by creating a class to hold ascii "pixel" data, this will include r, g, b colors and the charactor. Then we will be making a map class so you will have maximum flexibility when making your own game. This will include arrays.. like lots, and lots of arrays... that are held in more arrays.... wow, just thinking about all that data makes me feel small...
+						</div>
+					</div>
+					<div class="threePart">
+						<div class="tutorialTitle"><a href="" class="tutorialTitle">User Input and Updating</a></div>
+						<div class="tutorialText">
+							This section will include some very important transferable skills in javascript, taking in user keyboard input is vital for many programs, and ecspecially video games. There are many tutorials scattered about the internet on this subject but even after I serched through dozens of them I was continually having input lag problems for quite a while. At some point however it kinda just clicked, and I figured out what was going wrong. Like an idiot I made my programs run the input as soon as it came in without storing it, and as soon as I did just that my programs ran like a dream! The reason it is important to store input values is that your commputer runs keyboard input on a seperate thread from the rest of your computer, meaning that even if my programs were running at 60fps the input thread was running much, much faster, and by the time my program handled one input two more had passed unnoticed by the next frame. This problem is easily solved by storing inputs in a global array and having the array take in all the inputs on the keyboard input thread then passing them to your program when it starts a new frame all at once. This tutorial shows a very simple example of this just using booleans, but im sure you can impliment this in many new and interesing ways.
+						</div>
+					</div>
+					<div class="threePart">
+						<div class="tutorialTitle"><a href="" class="tutorialTitle">Displaying!</a></div>
+						<div class="tutorialText">
+							This is the final section, and in my eyes its the most important. Lots of people begin programming and are fustrated by just how difficult it is to get ANYTHING at all on the screen besides text. This is the step when we will see our program come to life! I have purposely structured this tutorial to make the display very flexible, all the previous code we wrote would be easy enough to copy into a different programming language, but every language has a multitute of ways in which you can display stuff. Im going to leave examples of how the data stuctures we have created could be shown the easiest way possible in both javascript and in Java using the standard libraries.
+						</div>
+					</div>
+				</div>
+			</div>
 		
 		</div>
 	</body>
