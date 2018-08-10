@@ -1,0 +1,63 @@
+
+<!doctype html>
+
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="storingData.css">
+	</head>
+
+	<body>
+		<div id=mainDiv>
+			<a href="../../tutorialsPage.html">Back</a>
+			<div id="title"><h1 style="color: #fff;">Storing Data</h1></div>
+
+			<div id="mainTextBody">
+				<div id="asciiClass">
+					Okay, so if you read the discription of this tutorial you already know the basic outline of this portion of the ASCII game tutorial. When it comes to learning new programming languages I find it helpfull to start with trying to make an ASCII game, this is due to a couple of reasons; firstly, it combines a lot of the more simple programming concepts in a very step-by-step way that tests your knowlege one piece at a time. And secondly, it does not require any advanced knowlege of computer graphics. <br><br>
+					We are going to start with making a class to hold all the data necessary for a tile in our game. This will include r, g, b, color and charactor, x, y position will be determined by the corrosponding position in the map array.<br><br>
+					<div class="code">
+						<pre>
+class ASCIIchar {
+	constructor(){
+		this.r = 0;
+		this.g = 0;
+		this.b = 0;
+		this.c = 'x';
+	}
+}
+						</pre>
+					</div>
+					<br>
+					The next step is making a map class which will hold a multidimentional array of ASCIIchar elements. This will make managing data later on much easier, and we will eventually be adding methods to edit the map more effectively.
+
+					<div class="code">
+						<pre>
+var WIDTH = 30;
+var HEIGHT = 30;
+
+class ASCIImap {
+	constructor(){
+		this.asciiArray = new Array(WIDTH)
+		for (var x = 0; x < WIDTH; x++){
+			this.asciiArray[x] = new Array(HEIGHT);
+		}
+		for (var x = 0; x < WIDTH; x++){
+			for (var y = 0; y < HEIGHT; y++){
+				this.asciiArray[x][y] = new ASCIIchar;
+			}
+		}
+	}
+}
+						</pre>
+					</div>
+
+					Thats all there is to creating the map. All we have to do now is make an instance of it 
+
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

@@ -80,12 +80,26 @@ a {
 	display: inline-block;
 }
 
-.threePart {
-	background: #333;
-	min-width: 270px;
-	width: 32%;
+.twoPart {
+	display: block;
+	width: 48%;
 	margin-left: 1%;
-	margin-top: 10px;
+	margin-right: 1%;
 	float: left;
-	display: inline-block;
+	background: #222;
+	margin-top: 20px;
+}
+
+.onePart {
+	margin: auto;
+	margin-top: 20px;
+	width: 98%;
+	margin-left: 1%; 
+	float: left;
+	background: #222;
+	display: block;
+}
+
+.tab {
+	margin-left: 2.5em;
 }
