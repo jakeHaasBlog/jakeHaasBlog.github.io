@@ -2,6 +2,10 @@ body {
 	background: #000;
 }
 
+a {
+	color: #00a9ff;
+}
+
 #mainDiv {
 	display: inline-block;
 	width: 98%;

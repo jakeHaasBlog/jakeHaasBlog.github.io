@@ -51,7 +51,77 @@ class ASCIImap {
 						</pre>
 					</div>
 
-					Thats all there is to creating the map. All we have to do now is make an instance of it 
+					Thats all there is to creating the map. All we have to do now is make an instance of it. For this tutorial we will make a multdimentional array to hold the maps in the background, and a map to hold foreground data. This will provide you with the maximum degree of flexibility when creating your own projects, in the next section I will write about how to display a specific map in the background.
+
+					<div class="code">
+						<pre>
+ASCIImap foreground = new ASCIImap;
+
+var currentMapX = 0;
+var currentMapY = 0;
+
+var mapsInXdirection = 10;
+var mapsInYdirection = 10;
+
+var maps = new Array(mapsInXdirection);
+for (var x = 0; x < maps.length; x++){
+	maps[x] = new Array(10);
+}
+for (var x = 0; x < maps.length; x++){
+	for (var y = 0; y < mapsInYdirection; y++){
+		maps[x][y] = new ASCIImap;
+	}
+}
+						</pre>
+					</div>
+
+					So, now we have an array of maps that is 10 by 10 but they are all initialized to being filled with black x's. Instaid of accessing the characters one by one we will write some functions within the ASCIImap class to edit the array more easily. These will include methods for primitive rectangles, and circles. The code shown below is to be copy pasted into the ASCIImap class.
+
+					<div class="code">
+						<pre>
+drawRect(x, y, width, height, r, g, b, c){
+	for(var x2 = x; x2 < x + width, x2++){
+		for(var y2 = y; y2 < y + height; y2++){
+			this.asciiArray[x2][y2].r = r;
+			this.asciiArray[x2][y2].g = g;
+			this.asciiArray[x2][y2].b = b;
+			this.asciiArray[x2][y2].c = c;
+		}
+	}
+}
+
+drawCircle(x, y, radius, r, g, b, c){
+	for(var x2 = x; x2 < x + radius, x2++){
+		for(var y2 = y; y2 < y + radius; y2++){
+			if (Math.sqrt((x*x) + (y*y)) <= radius){
+				this.asciiArray[x2][y2].r = r;
+				this.asciiArray[x2][y2].g = g;
+				this.asciiArray[x2][y2].b = b;
+				this.asciiArray[x2][y2].c = c;
+			}
+		}
+	}
+}
+						</pre>
+					</div>
+
+					So that's all i'm going to do as far as editing the maps goes but you can add as many methods as you desire. The next and final part is preparing the data for updating and displaying. We will create a function that is called every frame that sets the foreground to the map. This will give the appearence of clearing the foreground and foreground objects like the charactor will override the background value without changing the map when we draw them later.
+
+					<div class="code">
+						<pre>
+function clearForeground(){
+	for(var x = 0; x < foreground.ASCIIarray.length; x++){
+		for(var y = 0; y < foreground.ASCIIarray[0].length; y++){
+			foreground.ASCIIarray[x][y] = maps[currentMapX][currentMapY].ASCIIarray[x][y];
+		}
+	}
+}
+						</pre>
+					</div> 
+
+					So thats it for this part. In the next section we will talk about updating and displaying, this is where we will create our mainloop and talk about a couple of ways we can draw to the screen.<br><br>
+
+					<a>Click here to go to the next part!</a>
 
 				</div>
 			</div>
