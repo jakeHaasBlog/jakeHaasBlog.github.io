@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
 	<head>
@@ -27,8 +27,14 @@
 					<div class="code">
 						JavaScript code is in pink
 					</div>
+					<div class="htmlCode">
+						html is in blue
+					</div>
+					<div class="cssCode">
+						css is in green
+					</div>
 					<div class="javaCode">
-						Java is in green
+						Java is in orange
 					</div>
 
 					Alright, so lets start writing some code! To begin with we need to create a mainloop, we will do this in a function so we can begin the loop with a call in html. Because we are writing this in javascript and javascript is single-threaded there is a special function call we have to use to make a loop and avoid the dreaded "not responding" message.
@@ -46,10 +52,10 @@ function mainloop(){
 	var c;
 	for (var y = 0; y < HEIGHT; y++){
 		for (var x = 0; x < WIDTH; x++){
-			c = finalArray[x][y].char;
-			r = finalArray[x][y].r;
-			g = finalArray[x][y].g;
-			b = finalArray[x][y].b;
+			r = foreground.asciiArray[x][y].r;
+			g = foreground.asciiArray[x][y].g;
+			b = foreground.asciiArray[x][y].b;
+			c = foreground.asciiArray[x][y].c;
 		
 			finalTxt += "&lt;text style='color: rgb("+r+", "+g+", "+b+");'>"+c+"&lt;/text>";
 		}
@@ -87,12 +93,251 @@ var mainTextBody = document.getElementById("yourDivsID");
 
 					Okay, so assuming everything went correctly the underlying map you created should be displaying properly now. If there are any issues refer to this source code which I know works.
 
-					<div class="code">
+					<div class="htmlCode">
 						<pre>
+							
+&lt;!DOCTYPE html>
+
+&lt;html>
+	&lt;body style="background: #222">
+		&lt;div id="maindiv" style="
+		display: inline-block;
+		margin: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 1000px;
+		height: 700px;
+		">&lt;/div>
+
+		&lt;script src="yourJavascriptFilePath">mainloop();&lt;/script>
+
+	&lt;/body>
+&lt;/html>
 
 						</pre>
 					</div>
 
+					<div class="code">
+						<pre>
+
+class ASCIIchar {
+	constructor(){
+		this.r = 0;
+		this.g = 0;
+		this.b = 0;
+		this.c = 'x';
+	}
+}
+
+var WIDTH = 30;
+var HEIGHT = 30;
+
+class ASCIImap {
+	constructor(){
+		this.asciiArray = new Array(WIDTH);
+		for (var x = 0; x < WIDTH; x++){
+			this.asciiArray[x] = new Array(HEIGHT);
+		}
+		for (var x = 0; x < WIDTH; x++){
+			for (var y = 0; y < HEIGHT; y++){
+				this.asciiArray[x][y] = new ASCIIchar;
+			}
+		}
+	}
+
+	drawRect(x, y, width, height, r, g, b, c){
+		for(var x2 = x; x2 < x + width; x2++){
+			for(var y2 = y; y2 < y + height; y2++){
+				this.asciiArray[x2][y2].r = r;
+				this.asciiArray[x2][y2].g = g;
+				this.asciiArray[x2][y2].b = b;
+				this.asciiArray[x2][y2].c = c;
+			}
+		}
+	}
+
+	drawCircle(x, y, radius, r, g, b, c){
+		for(var x2 = x; x2 < x + radius; x2++){
+			for(var y2 = y; y2 < y + radius; y2++){
+				if (Math.sqrt((x*x) + (y*y)) <= radius){
+					this.asciiArray[x2][y2].r = r;
+					this.asciiArray[x2][y2].g = g;
+					this.asciiArray[x2][y2].b = b;
+					this.asciiArray[x2][y2].c = c;
+				}
+			}
+		}
+	}
+}
+
+var foreground = new ASCIImap;
+
+var currentMapX = 0;
+var currentMapY = 0;
+
+var mapsInXdirection = 10;
+var mapsInYdirection = 10;
+
+var maps = new Array(mapsInXdirection);
+for (var x = 0; x < maps.length; x++){
+	maps[x] = new Array(mapsInYdirection);
+}
+for (var x = 0; x < maps.length; x++){
+	for (var y = 0; y < mapsInYdirection; y++){
+		maps[x][y] = new ASCIImap;
+	}
+}
+
+
+function clearForeground(){
+	for(var x = 0; x < WIDTH; x++){
+		for(var y = 0; y < HEIGHT; y++){
+			foreground.asciiArray[x][y] = maps[currentMapX][currentMapY].asciiArray[x][y];
+		}
+	}
+}
+
+var mainTextBody = document.getElementById("maindiv");
+
+document.getElementsByTagName("body")[0].appendChild(mainTextBody);
+
+function mainloop(){
+	
+	clearForeground(); // this is the function we made previously
+
+	foreground.drawRect(3, 3, 10, 10, 255, 0, 0, 'R');
+	
+	var finalTxt = "";
+	var r;
+	var g;
+	var b;
+	var c;
+	for (var y = 0; y < HEIGHT; y++){
+		for (var x = 0; x < WIDTH; x++){
+			r = foreground.asciiArray[x][y].r;
+			g = foreground.asciiArray[x][y].g;
+			b = foreground.asciiArray[x][y].b;
+			c = foreground.asciiArray[x][y].c;
+		
+			finalTxt += "&lt;text style='color: rgb("+r+", "+g+", "+b+");'>"+c+"&lt;/text>";
+		}
+		finalTxt += "&lt;br>";
+	}
+	mainTextBody.innerHTML = finalTxt;
+	
+
+	requestAnimationFrame(mainloop);
+
+}
+						</pre>
+					</div>
+
+					If you run this example code you should see a background of black lowercase x's with a box of red R's. You will notice however that the R's are larger than the x's and make the map uneven. The height of a character is also greater than the width of a character so the map is stretched out. These issues can be fixed by using a monospaced font and decreasing the line-height. Wherever you are writing the css for your "maindiv" write this:
+
+					<div class="cssCode">
+						<pre>
+line-height: 70%;
+font-family: monospace;
+font-size: 20px;
+						</pre>
+					</div>
+
+					* Note that if you are styleing with javascript dashes will be deleted and the next word will start with a capital Ex: line-height will be lineHeight.<br><br>
+
+					Now that you have have tested your code and have a display you are happy with it is a good idea to make the background black so if you want to make an empty space you just need to change the colour of the character to black.
+					<br><br>
+					So that concludes displaying in html, and javascript. The next section will be one method of displaying in Java. It will use the default library exclusively. I am just going to include the bare minimum for displaying with maximum flexibility, the "storing data" section can be followed along in Java if you are somewhat familiar with it. Then this display code can be changed to use your own map variable rather than the constant one I use in the example. Also, side note the Graphics variable has other methods to create primitive shapes like drawRect and drawLine. 
+
+					<div class="javaCode">
+						<pre>
+				
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+public class main {
+
+    static GameWindow window = new GameWindow();
+
+    public static void main(String args[]){
+
+        ASCIIchar map[][] = new ASCIIchar[30][30];
+        for (int x = 0; x < map.length; x++){
+            for (int y = 0; y < map[0].length; y++){
+                map[x][y] = new ASCIIchar();
+                map[x][y].b = 255;
+            }
+        }
+
+        map[10][10].c = 'R';
+        map[10][10].r = 255;
+
+        while(true){
+
+            displayFinalArray(map); // the finalized map after background drawn and foreground drawn on top
+
+            window.repaint();
+        }
+
+    }
+
+
+    public static void displayFinalArray(ASCIIchar[][] map){
+        int r, g, b;
+        int xSpacing = 13;
+        int ySpacing = 13;
+
+        for (int x = 0; x < map.length; x++){
+            for (int y = 0; y < map[0].length; y++){
+                r = map[x][y].r;
+                g = map[x][y].g;
+                b = map[x][y].b;
+
+                window.getDisplay().setColor(new Color(r, g, b));
+                window.getDisplay().drawString(String.format("%c", map[x][y].c), x*xSpacing, y*ySpacing);
+            }
+        }
+    }
+
+}
+
+
+class GameWindow extends JFrame{
+
+    private static BufferedImage frame;
+    private static Graphics frameGraphics;
+
+    public GameWindow(){
+        super("window title");
+        setSize(600, 600);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+
+        setResizable(false);
+        frame = new BufferedImage(600, 600, BufferedImage.TYPE_INT_RGB);
+        frameGraphics = frame.getGraphics();
+    }
+
+    public Graphics getDisplay(){
+        return frameGraphics;
+    }
+
+    public void paint(Graphics g){
+        g.drawImage(frame, 0, 0, null);
+    }
+
+}
+
+
+class ASCIIchar{
+    public int r = 0;
+    public int g = 0;
+    public int b = 0;
+    public char c = 'x';
+}
+						</pre>
+					</div>
 				</div>
 			</div>
 

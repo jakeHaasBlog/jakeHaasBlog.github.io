@@ -48,7 +48,23 @@ a {
 
 .javaCode {
 	background: #000;
-	color: #3fff00;
+	color: #ffcc00;
+	display: block;
+	margin: auto;
+	width: 96%;
+}
+
+.htmlCode {
+	background: #000;
+	color: #00a1ff;
+	display: block;
+	margin: auto;
+	width: 96%;
+}
+
+.cssCode {
+	background: #000;
+	color: #00d800;
 	display: block;
 	margin: auto;
 	width: 96%;

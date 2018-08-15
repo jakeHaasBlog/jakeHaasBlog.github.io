@@ -46,7 +46,7 @@ var HEIGHT = 30;
 
 class ASCIImap {
 	constructor(){
-		this.asciiArray = new Array(WIDTH)
+		this.asciiArray = new Array(WIDTH);
 		for (var x = 0; x < WIDTH; x++){
 			this.asciiArray[x] = new Array(HEIGHT);
 		}
@@ -64,7 +64,7 @@ class ASCIImap {
 
 					<div class="code">
 						<pre>
-ASCIImap foreground = new ASCIImap;
+var foreground = new ASCIImap;
 
 var currentMapX = 0;
 var currentMapY = 0;
@@ -74,7 +74,7 @@ var mapsInYdirection = 10;
 
 var maps = new Array(mapsInXdirection);
 for (var x = 0; x < maps.length; x++){
-	maps[x] = new Array(10);
+	maps[x] = new Array(mapsInYdirection);
 }
 for (var x = 0; x < maps.length; x++){
 	for (var y = 0; y < mapsInYdirection; y++){
@@ -89,7 +89,7 @@ for (var x = 0; x < maps.length; x++){
 					<div class="code">
 						<pre>
 drawRect(x, y, width, height, r, g, b, c){
-	for(var x2 = x; x2 < x + width, x2++){
+	for(var x2 = x; x2 < x + width; x2++){
 		for(var y2 = y; y2 < y + height; y2++){
 			this.asciiArray[x2][y2].r = r;
 			this.asciiArray[x2][y2].g = g;
@@ -100,7 +100,7 @@ drawRect(x, y, width, height, r, g, b, c){
 }
 
 drawCircle(x, y, radius, r, g, b, c){
-	for(var x2 = x; x2 < x + radius, x2++){
+	for(var x2 = x; x2 < x + radius; x2++){
 		for(var y2 = y; y2 < y + radius; y2++){
 			if (Math.sqrt((x*x) + (y*y)) <= radius){
 				this.asciiArray[x2][y2].r = r;
@@ -119,9 +119,9 @@ drawCircle(x, y, radius, r, g, b, c){
 					<div class="code">
 						<pre>
 function clearForeground(){
-	for(var x = 0; x < foreground.ASCIIarray.length; x++){
-		for(var y = 0; y < foreground.ASCIIarray[0].length; y++){
-			foreground.ASCIIarray[x][y] = maps[currentMapX][currentMapY].ASCIIarray[x][y];
+	for(var x = 0; x < WIDTH; x++){
+		for(var y = 0; y < HEIGHT; y++){
+			foreground.asciiArray[x][y] = maps[currentMapX][currentMapY].asciiArray[x][y];
 		}
 	}
 }

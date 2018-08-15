@@ -1,3 +1,5 @@
+
+
 class ASCIIchar {
 	constructor(){
 		this.r = 0;
@@ -12,7 +14,7 @@ var HEIGHT = 30;
 
 class ASCIImap {
 	constructor(){
-		this.asciiArray = new Array(WIDTH)
+		this.asciiArray = new Array(WIDTH);
 		for (var x = 0; x < WIDTH; x++){
 			this.asciiArray[x] = new Array(HEIGHT);
 		}
@@ -24,7 +26,7 @@ class ASCIImap {
 	}
 
 	drawRect(x, y, width, height, r, g, b, c){
-		for(var x2 = x; x2 < x + width, x2++){
+		for(var x2 = x; x2 < x + width; x2++){
 			for(var y2 = y; y2 < y + height; y2++){
 				this.asciiArray[x2][y2].r = r;
 				this.asciiArray[x2][y2].g = g;
@@ -35,7 +37,7 @@ class ASCIImap {
 	}
 
 	drawCircle(x, y, radius, r, g, b, c){
-		for(var x2 = x; x2 < x + radius, x2++){
+		for(var x2 = x; x2 < x + radius; x2++){
 			for(var y2 = y; y2 < y + radius; y2++){
 				if (Math.sqrt((x*x) + (y*y)) <= radius){
 					this.asciiArray[x2][y2].r = r;
@@ -48,7 +50,7 @@ class ASCIImap {
 	}
 }
 
-ASCIImap foreground = new ASCIImap;
+var foreground = new ASCIImap;
 
 var currentMapX = 0;
 var currentMapY = 0;
@@ -58,7 +60,7 @@ var mapsInYdirection = 10;
 
 var maps = new Array(mapsInXdirection);
 for (var x = 0; x < maps.length; x++){
-	maps[x] = new Array(10);
+	maps[x] = new Array(mapsInYdirection);
 }
 for (var x = 0; x < maps.length; x++){
 	for (var y = 0; y < mapsInYdirection; y++){
@@ -68,25 +70,27 @@ for (var x = 0; x < maps.length; x++){
 
 
 function clearForeground(){
-	for(var x = 0; x < foreground.ASCIIarray.length; x++){
-		for(var y = 0; y < foreground.ASCIIarray[0].length; y++){
-			foreground.ASCIIarray[x][y] = maps[currentMapX][currentMapY].ASCIIarray[x][y];
+	for(var x = 0; x < WIDTH; x++){
+		for(var y = 0; y < HEIGHT; y++){
+			foreground.asciiArray[x][y] = maps[currentMapX][currentMapY].asciiArray[x][y];
 		}
 	}
 }
 
+var mainTextBody = document.getElementById("maindiv");
+// var mainTextBody = document.createElement("div");
+// mainTextBody.innerHTML = "hello";
+// mainTextBody.style.width = "1000px";
+// mainTextBody.style.height = "500px";
 
-var mainTextBody = document.createElement("div");
-mainTextBody.style.display = "inline-block";
-mainTextBody.style.width = "1000px";
-mainTextBody.style.height = "900px";
-mainTextBody.style.margin = "auto";
-
+document.getElementsByTagName("body")[0].appendChild(mainTextBody);
 
 function mainloop(){
 	
 	clearForeground(); // this is the function we made previously
 
+	foreground.drawRect(3, 3, 10, 10, 255, 0, 0, 'R');
+	
 	var finalTxt = "";
 	var r;
 	var g;
@@ -94,16 +98,17 @@ function mainloop(){
 	var c;
 	for (var y = 0; y < HEIGHT; y++){
 		for (var x = 0; x < WIDTH; x++){
-			c = finalArray[x][y].char;
-			r = finalArray[x][y].r;
-			g = finalArray[x][y].g;
-			b = finalArray[x][y].b;
+			r = foreground.asciiArray[x][y].r;
+			g = foreground.asciiArray[x][y].g;
+			b = foreground.asciiArray[x][y].b;
+			c = foreground.asciiArray[x][y].c;
 		
 			finalTxt += "<text style='color: rgb("+r+", "+g+", "+b+");'>"+c+"</text>";
 		}
 		finalTxt += "<br>";
 	}
 	mainTextBody.innerHTML = finalTxt;
+	
 
 	requestAnimationFrame(mainloop);
 
