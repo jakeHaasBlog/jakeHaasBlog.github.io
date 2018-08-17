@@ -1,0 +1,81 @@
+body {
+	background: #000;
+}
+
+a {
+	color: #00a9ff;
+}
+
+#mainDiv {
+	display: inline-block;
+	width: 98%;
+	margin-left: 1%;
+	background: #111;
+	height: auto;
+}
+
+#title {
+	margin: auto;
+	text-align: center;
+	display: block;
+	background: #333;
+	padding-top: 10px;
+}
+
+#mainTextBody {
+	background: #222;
+	margin: auto;
+	width: 100%;
+	color: #fff;
+}
+
+#asciiClass {
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 1%;
+	background: #333;
+	color: #fff;
+	width: 98%;
+}
+
+.code {
+	background: #000;
+	color: #ff005d;
+	display: block;
+	margin: auto;
+	width: 96%;
+}
+
+.javaCode {
+	background: #000;
+	color: #ffcc00;
+	display: block;
+	margin: auto;
+	width: 96%;
+}
+
+.htmlCode {
+	background: #000;
+	color: #00a1ff;
+	display: block;
+	margin: auto;
+	width: 96%;
+}
+
+.cssCode {
+	background: #000;
+	color: #00d800;
+	display: block;
+	margin: auto;
+	width: 96%;
+}
+
+#keyCodes {
+	display: block;
+	float: left;
+	background: #111;
+	width: 20%;
+	margin: auto;
+	color: #fff;
+	height: 335px;
+}

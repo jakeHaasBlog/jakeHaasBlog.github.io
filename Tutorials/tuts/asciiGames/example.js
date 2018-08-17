@@ -1,4 +1,30 @@
+class Key {
+	constructor(){
+		this.down = false;
+	}
+}
 
+class KeyBoard {
+	constructor(){
+		this.keys = new Array(222);   // there are 222 keycodes
+		for (var i = 0; i < 222; i++){
+			this.keys[i] = new Key;
+		}
+	}
+}
+
+var keyboard = new KeyBoard;
+
+function keyPressed(event){
+	keyboard.keys[event.keyCode].down = true; // the index in the array will corrospond to the keycode
+}
+
+function keyReleased(event){
+	keyboard.keys[event.keyCode].down = false;    
+}
+
+document.addEventListener('keydown', keyPressed);
+document.addEventListener('keyup', keyReleased);
 
 class ASCIIchar {
 	constructor(){
@@ -72,7 +98,10 @@ for (var x = 0; x < maps.length; x++){
 function clearForeground(){
 	for(var x = 0; x < WIDTH; x++){
 		for(var y = 0; y < HEIGHT; y++){
-			foreground.asciiArray[x][y] = maps[currentMapX][currentMapY].asciiArray[x][y];
+			foreground.asciiArray[x][y].c = maps[currentMapX][currentMapY].asciiArray[x][y].c;
+			foreground.asciiArray[x][y].r = maps[currentMapX][currentMapY].asciiArray[x][y].r;
+			foreground.asciiArray[x][y].g = maps[currentMapX][currentMapY].asciiArray[x][y].g;
+			foreground.asciiArray[x][y].b = maps[currentMapX][currentMapY].asciiArray[x][y].b;
 		}
 	}
 }
@@ -85,11 +114,70 @@ var mainTextBody = document.getElementById("maindiv");
 
 document.getElementsByTagName("body")[0].appendChild(mainTextBody);
 
+
+
+
+class Character {
+	constructor(){
+		this.x = 3;
+		this.y = 3;
+		this.speed = 1;
+
+		this.c = '@';
+		this.r = 255;
+		this.g = 0;
+		this.b = 0;
+
+		this.wall = '#';
+	}
+
+	update(){
+
+		var toX = this.x;
+		var toY = this.y;
+
+		// w
+		if(keyboard.keys[87].down == true) toY-=this.speed;
+
+		// a
+		if(keyboard.keys[65].down == true) toX-=this.speed;
+
+		// s
+		if(keyboard.keys[83].down == true) toY+=this.speed;
+
+		// d
+		if(keyboard.keys[68].down == true) toX+=this.speed;
+
+		if (maps[currentMapX][currentMapY].asciiArray[toX][toY].c != this.wall){
+			this.x = toX;
+			this.y = toY;
+		}
+
+		var roundedX = Math.round(this.x);
+		var roundedY = Math.round(this.y);
+
+		//alert(x +"   "+ y);
+
+		foreground.asciiArray[roundedX][roundedY].c = this.c;
+		foreground.asciiArray[roundedX][roundedY].r = this.r;
+		foreground.asciiArray[roundedX][roundedY].g = this.g;
+		foreground.asciiArray[roundedX][roundedY].b = this.b;
+
+	}
+}
+
+var bob = new Character;
+
+
+maps[0][0].drawRect(5, 14, 10, 2, 0, 255, 0, '#');
+
+
+
 function mainloop(){
 	
 	clearForeground(); // this is the function we made previously
 
-	foreground.drawRect(3, 3, 10, 10, 255, 0, 0, 'R');
+	bob.update();
 	
 	var finalTxt = "";
 	var r;

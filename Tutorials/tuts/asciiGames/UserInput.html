@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123759447-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-123759447-1');
+		</script>
+
+		<link type="text/css" rel="stylesheet" href="UserInput.css">
+	</head>
+
+	<body>
+		<div id=mainDiv>
+			<a href="../../tutorialsPage.html">Back</a>
+			<div id="title" style="color: #fff"><h1>User Input and Updating</h1></div>
+			
+			<div id="mainTextBody">
+				This part of the tutorial is the final piece necissary for you to make a great ascii game. I will show you the key to taking keyboard and mouse input, and a simple example of how to use it practically, and effectively. <br><br>
+
+				We will start by looking at the built-in functions for keyboard press and release events. In javascript functions can be trated almost like variables, the built-in methods take a function as an argument so we will first write those.
+
+				<div class="code">
+					<pre>
+
+function keyPressed(event){
+	
+}
+
+function keyReleased(event){
+	
+}
+
+
+document.addEventListener('keydown', keyPressed);
+document.addEventListener('keyup', keyReleased);
+
+					</pre>
+				</div>
+
+				Okay, so now every time there is a key pressed or released on your keyboard it will call the keyPressed or keyReleased functions and give them an event as an input.<br><br>
+
+				Something very important to understand about keyboard input is that it is handeled internally within your computer. This input process runs on a different "thread" than your ascii game will. The problem with this is that in the time it takes for one frame in your game to be computed and drawn there could be many press and release events that go unhandled, this leads to keys that get pressed but not released or even not pressed at all. One way to curcumvent this is to hold all the events that happen in between frames in a chunk of memory, then handle them all at once at the beginning of the following frame. This is a simple example of this being put into action:
+
+				<div class="code">
+					<pre>
+
+class Key {
+	constructor(){
+		this.down = false;
+	}
+}
+
+class KeyBoard {
+	constructor(){
+		this.keys = new Array(222);   // there are 222 keycodes
+		for (var i = 0; i < 222; i++){
+			this.keys[i] = new Key;
+		}
+	}
+}
+
+var keyboard = new KeyBoard;
+
+function keyPressed(event){
+	keyboard.keys[event.keyCode].down = true;    // the index in the array will corrospond to the keycode
+}
+
+function keyReleased(event){
+	keyboard.keys[event.keyCode].down = false;    
+}
+
+					</pre>
+				</div>
+
+				One thing to note is that the "keyCode" given by javascript is different from the "character code" of the key. This is a table of all the keycodes that are recognised by javascript.<br>
+
+<div id="keyCodes">
+	<pre>
+backspace 	    8
+tab	            9 
+enter	            13
+shift       	    16
+ctrl	            17
+alt	            18
+pause/break	    19
+caps lock	    20
+escape	            27
+page up	            33
+page down	    34
+end	            35
+home	            36
+left arrow	    37
+up arrow	    38
+right arrow	    39
+down arrow	    40
+insert	            45
+delete	            46
+0	            48
+	</pre>
+</div>
+<div id="keyCodes">
+	<pre>
+1	            49
+2	            50
+3	            51
+4	            52
+5	            53
+6	            54
+7	            55
+8	            56
+9	            57
+a	            65
+b	            66
+c	            67
+d	            68
+e	            69
+f	            70
+g	            71
+h	            72
+i	            73
+j	            74
+k	            75
+l	            76
+	</pre>
+</div>
+<div id="keyCodes">
+	<pre>
+m	            77
+n	            78
+o	            79
+p	            80
+q	            81
+r	            82
+s	            83
+t	            84
+u	            85
+v	            86
+w	            87
+x	            88
+y	            89
+z	            90
+left wind key	    91
+right wind key      92
+select key	    93
+numpad 0	    96
+numpad 1	    97
+numpad 2	    98
+	</pre>
+</div>
+<div id="keyCodes">
+	<pre>
+numpad 3	    99
+numpad 4	    100
+numpad 5	    101
+numpad 6	    102
+numpad 7	    103
+numpad 8	    104
+numpad 9	    105
+multiply	    106
+add	            107
+subtract	    109
+decimal point	    110
+divide	            111
+f1	            112
+f2	            113
+f3	            114
+f4	            115
+f5	            116
+f6	            117
+f7	            118
+f8	            119
+f9	            120
+	</pre>
+</div>
+<div id="keyCodes">
+	<pre>
+f10	            121
+f11	            122
+f12	            123
+num lock	    144
+scroll lock	    145
+semi-colon	    186
+equal sign	    187
+comma	            188
+dash	            189
+period	            190
+forward slash	    191
+grave accent	    192
+open bracket	    219
+back slash	    220
+close braket	    221
+single quote	    222
+	</pre>
+</div>
+
+				<br><text width: 100%;">Or you can refer to this site: <a href="https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes">cambia research</a></text><br><br>
+
+				Now that we have the "state" of every key all we have to do to implement it is something like this:<br> "if (keyboard.keys[8].down) function();" <br>This is not the only way to handle input but I think it is a good example that allows room for creativity.<br><br>
+
+				Next we will implement this in our ascii game. The code above should be the first lines in your code because they don't require any previous declarations.<br><br>
+
+				I will be adding a character that can move around using the W A S D keys.
+
+				<div class="code">
+					<pre>
+						
+class Character {
+	constructor(){
+		this.x = 10;
+		this.y = 10;
+		this.speed = 1;
+
+		this.c = '@';
+		this.r = 255;
+		this.g = 0;
+		this.b = 0;
+
+		this.wall = '#';
+	}
+
+	update(){
+
+		var toX = this.x;
+		var toY = this.y;
+
+		// w
+		if(keyboard.keys[87].down) toY-=this.speed;
+
+		// a
+		if(keyboard.keys[65].down) toX-=this.speed;
+
+		// s
+		if(keyboard.keys[83].down) toY+=this.speed;
+
+		// d
+		if(keyboard.keys[68].down) toX+=this.speed;
+
+		if (maps[currentMapX][currentMapY].asciiArray[toX][toY].c != this.wall){
+			this.x = toX;
+			this.y = toY;
+		}
+
+		var roundedX = Math.round(this.x);
+		var roundedY = Math.round(this.y);
+
+		foreground.asciiArray[roundedX][roundedY].c = this.c;
+		foreground.asciiArray[roundedX][roundedY].r = this.r;
+		foreground.asciiArray[roundedX][roundedY].g = this.g;
+		foreground.asciiArray[roundedX][roundedY].b = this.b;
+
+	}
+}
+
+var bob = new Character;
+
+					</pre>
+				</div>
+
+				Now if we call bob.update(); in our mainloop we should see bob bending to our will! In addition to this if you make a wall out of hashtags bob shall not pass!! There are some limitations however, if bob hits a wall there will be an index out of bounds exception which is an easy problem to solve, and I trust you to figure it out(totally not because i'm lazy...).<br><br>
+
+				That pretty much concludes this tutorial actually.. But i'm going to add one extra part here to show you how to get mouse input and location. The code below simply shows the position of the mouse when clicked. 
+
+				<div class="code">
+					<pre>
+						
+function mouseDown(event){
+	alert("x: " + event.clientX + "   Y: " + event.clientY);
+}
+
+document.addEventListener('mousedown', mouseDown);
+
+					</pre>
+				</div>
+
+				If you need to get the position of the mouse without a click you can do this:
+
+				<div class="code">
+					<pre>
+						
+function mouseMove(event){
+	alert("x: " + event.clientX + "   Y: " + event.clientY);
+}
+
+document.addEventListener('mousemove', mouseMove);
+
+					</pre>
+				</div>
+
+				And that concludes the ASCIIgame tutorial! Have fun with this and make something awesome!!!! The next tutorial will be on the perlin noise flow generator. It will cover a graphics library called P5.js and an algorithm called perlin noise.<br><br>
+
+			</div>
+
+		</div>
+	</body>
+</html>

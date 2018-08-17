@@ -178,7 +178,10 @@ for (var x = 0; x < maps.length; x++){
 function clearForeground(){
 	for(var x = 0; x < WIDTH; x++){
 		for(var y = 0; y < HEIGHT; y++){
-			foreground.asciiArray[x][y] = maps[currentMapX][currentMapY].asciiArray[x][y];
+			foreground.asciiArray[x][y].c = maps[currentMapX][currentMapY].asciiArray[x][y].c;
+			foreground.asciiArray[x][y].r = maps[currentMapX][currentMapY].asciiArray[x][y].r;
+			foreground.asciiArray[x][y].g = maps[currentMapX][currentMapY].asciiArray[x][y].g;
+			foreground.asciiArray[x][y].b = maps[currentMapX][currentMapY].asciiArray[x][y].b;
 		}
 	}
 }
@@ -324,6 +327,11 @@ class ASCIIchar{
 }
 						</pre>
 					</div>
+
+					That concludes this section on displaying, I will likely make a tutorial later on that talks about how to create "real" graphics with an external library called P5.js. In addition to that the turorial I created on the perlin noise flow program uses P5.js which is an example of the library being used in a graphical application.<br><br>
+
+					<a href="UserInput.html">User Input and Updating</a><br><br>
+
 				</div>
 			</div>
 

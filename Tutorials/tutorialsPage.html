@@ -38,7 +38,7 @@
 					</div>
 
 					<div class="onePart">
-						<div class="tutorialTitle"><a href="" class="tutorialTitle">User Input and Updating</a></div>
+						<div class="tutorialTitle"><a href="tuts/asciiGames/UserInput.html" class="tutorialTitle">User Input and Updating</a></div>
 						<div class="tutorialText">
 							This section will include some very important transferable skills in javascript, taking in user keyboard input is vital for many programs, and ecspecially video games. There are many tutorials scattered about the internet on this subject but even after I serched through dozens of them I was continually having input lag problems for quite a while. At some point however it kinda just clicked, and I figured out what was going wrong. Like an idiot I made my programs run the input as soon as it came in without storing it, and as soon as I did just that my programs ran like a dream! The reason it is important to store input values is that your commputer runs keyboard input on a seperate thread from the rest of your computer, meaning that even if my programs were running at 60fps the input thread was running much, much faster, and by the time my program handled one input two more had passed unnoticed by the next frame. This problem is easily solved by storing inputs in a global array and having the array take in all the inputs on the keyboard input thread then passing them to your program when it starts a new frame all at once. This tutorial shows a very simple example of this just using booleans, but im sure you can impliment this in many new and interesing ways.
 						</div>
