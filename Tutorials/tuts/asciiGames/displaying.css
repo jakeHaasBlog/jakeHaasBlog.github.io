@@ -69,3 +69,15 @@ a {
 	margin: auto;
 	width: 96%;
 }
+
+#maindiv {
+	display: block;
+	width: 500px;
+	height: 485px;
+	line-height: 70%;
+	font-size: 30px;
+	background: #000;
+	font-family: monospace;
+	color: #fff;
+	margin: auto;
+}

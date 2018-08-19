@@ -1,3 +1,21 @@
+
+var mousePosText = document.getElementById("mousePos");
+var mainTextBody = document.getElementById("maindiv");
+
+function mouseMove(event){
+	mousePosText.innerHTML = "Mouse x: " + mouseX + "<br>"
+	                       + "Mouse y: " + mouseY;
+	                       mouseX = event.clientX;
+	                       mouseY = event.clientY;
+}
+
+document.addEventListener('mousemove', mouseMove);
+
+function mousePressed(){
+	alert("Mouse pressed X: " + mouseX + "   Y: " + mouseY);
+}
+
+
 class Key {
 	constructor(){
 		this.down = false;
@@ -106,7 +124,6 @@ function clearForeground(){
 	}
 }
 
-var mainTextBody = document.getElementById("maindiv");
 // var mainTextBody = document.createElement("div");
 // mainTextBody.innerHTML = "hello";
 // mainTextBody.style.width = "1000px";
@@ -166,9 +183,10 @@ class Character {
 	}
 }
 
-//var bob = new Character;
+var bob = new Character;
 
 maps[0][0].drawRect(0, 0, WIDTH, HEIGHT, 10, 10, 10, 'X');
+maps[0][0].drawRect(1, 1, WIDTH-2, HEIGHT-2, 0, 0, 0, 'o');
 maps[0][0].drawRect(5, 14, 10, 2, 0, 255, 0, '#');
 
 
@@ -176,7 +194,7 @@ function mainloop(){
 	
 	clearForeground(); // this is the function we made previously
 
-	//bob.update();
+	bob.update();
 	
 	var finalTxt = "";
 	var r;
@@ -196,7 +214,7 @@ function mainloop(){
 	}
 	mainTextBody.innerHTML = finalTxt;
 	
-
+	
 	requestAnimationFrame(mainloop);
 
 }

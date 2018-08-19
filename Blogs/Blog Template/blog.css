@@ -1,0 +1,10 @@
+#body {
+	background: #222;
+}
+
+#mainDiv {
+	background: #333;
+	display: inline-block;
+	height: auto;
+	width: 90%;
+}
