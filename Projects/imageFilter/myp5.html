@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="myp5.css">
+	</head>
+
+	<body>
+		<a href="../projectsPage.html">Back</a>
+		<h1>Image Filter!</h1>
+		<!--  <canvas id="can"></canvas>  -->
+		<img id="finalImage" src="initialImage.png">
+
+		<input type="file" id="inputFileButton">
+		<label id="inLabel" for="inputFileButton">Choose Image</label>
+
+		<div id='saveDiv'>
+			<a id="saveLink" download>Save Image Result</a>
+		</div>
+
+
+
+		<div id="inputs">
+			<div class="input">
+				Number Of Inputs<br>
+				<input type="text" id='bubbleInputsInput' class='inputField'>
+			</div>
+			<div class="input">
+				Bubbles Per Input<br>
+				<input type="text" id='bubblesPerInInput' class='inputField'>
+			</div>
+			<div class="input">
+				Color mode<br>
+				<input type="text" id='colorModeInput' class='inputField'>
+				white bubbles<br>
+				greyscale<br>
+				full color<br>
+			</div>
+			<div class="input">
+				Minimum Brightness<br>
+				<input type="text" id='minBrightnessInput' class='inputField'>
+			</div>
+		</div>
+
+
+
+		<script src="myp5Script.js"></script>
+	</body>
+
+</html>

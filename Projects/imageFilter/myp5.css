@@ -1,0 +1,81 @@
+body {
+	background: #333;
+}
+
+h1 {
+	display: block;
+	margin: auto;
+	text-align: center;
+	color: #fff;
+}
+
+input {
+	display: block;
+	margin: auto;
+}
+
+#saveDiv {
+	width: 124px;
+	display: block;
+	background: #fff;
+	border-style: solid;
+	border-radius: 4px;
+	text-align: center;
+	margin: auto;
+}
+
+#inputFileButton {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+#inLabel {
+	display: block;
+	background: #fff;
+	color: #000;
+	margin: auto;
+	width: 124px;
+	border-style: solid;
+	border-radius: 4px;
+	text-align: center;
+}
+
+
+#finalImage {
+	display: block;
+	width: 90%;
+	height: auto;
+	margin: auto;
+}
+
+#inputs {
+	display: inline-block;
+	width: 90%;
+	height: auto;
+	margin-left: 5%;
+	background: #111;
+}
+
+.input {
+	color: #fff;
+	display: block;
+	text-align: center;
+	width: 23%;
+	height: 100px;
+	background: #222;
+	margin-left: 1%;
+	margin-right: 1%;
+	float: left;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+
+.inputField {
+	width: 100%;
+}
