@@ -4,6 +4,7 @@ var canvas = document.createElement("canvas");
 var context = canvas.getContext('2d');
 var uploadedFile = document.getElementById('inputFileButton');
 var displayImage = document.getElementById('finalImage');
+var reload = document.getElementById('reload');
 
 var saveButton = document.getElementById('saveLink');
 
@@ -16,6 +17,13 @@ var bubbleInputsInput = document.getElementById('bubbleInputsInput');
 var bubblesPerInInput = document.getElementById('bubblesPerInInput');
 var colorModeInput = document.getElementById('colorModeInput');
 var minBrightnessInput = document.getElementById('minBrightnessInput');
+
+reload.onclick = reloadFunction;
+function reloadFunction(){
+	getInputs();
+	clearCircles();
+	filterImage();
+}
 
 var bubblesPerInput;
 var bubbleInputs;
@@ -252,12 +260,12 @@ class Circle{
 		}
 
 		for (var i = 0; i < circles.length; i++){
-			if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) < this.radius*2){
+			if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) < circles[i].radius){
 				if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) != 0){
 					this.fullGrown = true;
-					this.draw = false;
+					//this.draw = false;
 					circles[i].fullGrown = true;
-					circles[i].draw = false;
+					//circles[i].draw = false;
 				}
 			}
 		}
@@ -266,7 +274,7 @@ class Circle{
 	grow(){
 		if (this.fullGrown == false){
 			for(var i = 0; i < circles.length; i++){
-				if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) < this.radius*2){
+				if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) < this.radius + circles[i].radius){
 					if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) != 0){
 						this.fullGrown = true;
 						circles[i].fullGrown = true;

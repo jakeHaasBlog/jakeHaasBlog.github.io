@@ -46,6 +46,21 @@ input {
 }
 
 
+#reloadDiv{
+	display: block;
+	margin: auto;
+	width: 124px;
+	border-style: solid;
+	border-radius: 4px;
+	background: #fff;
+}
+
+#reload{
+	width: 124px;
+}
+
+
+
 #finalImage {
 	display: block;
 	width: 90%;
