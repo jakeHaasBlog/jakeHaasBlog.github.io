@@ -1,4 +1,5 @@
 
+
 var canvas = document.createElement("canvas");
 var context = canvas.getContext('2d');
 var uploadedFile = document.getElementById('inputFileButton');
@@ -20,11 +21,12 @@ var bubblesPerInput;
 var bubbleInputs;
 var colorMode;
 var minBrightness;
+
 function getInputs(){
 	bubbleInputs = Number(bubbleInputsInput.value);
 	bubblesPerInput = Number(bubblesPerInInput.value);
 	colorMode = colorModeInput.value;
-	minBrightness = Math.floor(Number(bubbleInputsInput.value));
+	minBrightness = Number(minBrightnessInput.value);
 
 	if (bubbleInputs == '') bubbleInputs = 2000;
 	if (isNaN(bubbleInputs)){
@@ -43,6 +45,11 @@ function getInputs(){
 	} else {
 		colorMode = 'full color';
 	}
+	if (minBrightness == '') minBrightness = 0;
+	if (isNaN(minBrightness)){
+		minBrightness = 0;
+	}
+
 }
 
 
@@ -236,18 +243,21 @@ class Circle{
 		this.x = x + imageWidth;
 		this.y = y;
 		this.radius = 0;
-		if (newImageData.data[getXY(this.x, this.y)] == 0){
-			if (newImageData.data[getXY(this.x, this.y)+1] == 0){
-				if (newImageData.data[getXY(this.x, this.y)+1] == 0){
-					this.fullGrown = true;
-				}
-			}
+		var r = newImageData.data[getXY(this.x, this.y)];
+		var g = newImageData.data[getXY(this.x, this.y)+1];
+		var b = newImageData.data[getXY(this.x, this.y)+2];
+		var avg = (r + g + b) / 3;
+		if (avg < minBrightness){
+			this.fullGrown = true;
 		}
+
 		for (var i = 0; i < circles.length; i++){
 			if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) < this.radius*2){
 				if (distanceBetweenPoints(this.x, this.y, circles[i].x, circles[i].y) != 0){
 					this.fullGrown = true;
-					draw = false;
+					this.draw = false;
+					circles[i].fullGrown = true;
+					circles[i].draw = false;
 				}
 			}
 		}
