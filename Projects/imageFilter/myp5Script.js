@@ -50,6 +50,8 @@ function getInputs(){
 		
 	} else if (colorMode == 'full color'){
 		
+	} else if (colorMode == 'sorted'){
+
 	} else {
 		colorMode = 'full color';
 	}
@@ -108,8 +110,12 @@ function initImageLoader(){
 
 function filterImage(){
 	getInputs();
-	copyCanvasGreyscale();
-	generateCircles();
+	if (colorMode == 'sorted'){
+		sortImage();
+	} else {
+		copyCanvasGreyscale();
+		generateCircles();
+	}
 	displayImage.src = canvas.toDataURL();
 }
 
@@ -155,11 +161,72 @@ function copyCanvasGreyscale(){
 			data[i+2] = avg;
 			data[i+3] = 255;
 		}
-	} else if (colorMode == 'full color'){
-
-	}
+	} 
 }
 
+
+
+// sorts from least to greatest
+function sortImage(){
+
+	newImageData = context.getImageData(0, 0, imageWidth, imageHeight);
+
+
+	var rowValues = new Array(imageWidth);
+	var rowOrder = new Array(imageWidth);
+	for (var x = 0; x < imageWidth; x++){
+		rowValues[x] = rowValue(x);
+		rowOrder[x] = x;
+	}	
+
+	var sorted = false;
+	var sortCheck;
+	var tmp;
+	while (!sorted){
+		for (var i = 0; i < rowValues.length; i++){
+
+			// if values out of order switch them
+			if (rowValues[i] > rowValues[i+1]) {
+				tmp = rowValues[i];
+				rowValues[i] = rowValues[i+1];
+				rowValues[i+1] = tmp;
+
+				tmp = rowOrder[i];
+				rowOrder[i] = rowOrder[i+1];
+				rowOrder[i+1] = tmp;
+			}
+		}
+
+		// check if its sorted
+		sortCheck = true;
+		for (var i = 0; i < rowValues.length; i++){
+			if (rowValues[i] > rowValues[i+1]) sortCheck = false;
+		}
+		if (sortCheck) sorted = true;
+	}
+
+	for (var x = 0; x < imageWidth; x++){
+		for (var y = 0; y < imageHeight; y++){
+			newImageData.data[getXY(x )] = newImageData.data[getXY(rowOrder[x], y)];
+			newImageData.data[getXY(x ) + 1] = newImageData.data[getXY(rowOrder[x], y) + 1];
+			newImageData.data[getXY(x ) + 2] = newImageData.data[getXY(rowOrder[x], y) + 2];
+		}
+	}
+
+	context.putImageData(newImageData, 0, 0);
+
+	alert('displayed');
+}
+
+function rowValue(x){
+	var total = 0;
+	for (var y = 0; y < imageHeight; y++){
+		total += newImageData.data[getXY(Number(x), y)];
+		total += newImageData.data[getXY(Number(x), y)+1];
+		total += newImageData.data[getXY(Number(x), y)+2];
+	}
+	return total;
+}
 
 
 function clearCircles(){
