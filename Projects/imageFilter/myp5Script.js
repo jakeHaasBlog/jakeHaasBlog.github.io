@@ -392,5 +392,4 @@ function savePressed(){
 	saveButton.href = canvas.toDataURL();
 	canvas.width = imageWidth * 2;
 	context.putImageData(tmpFullImage, 0, 0);
-	alert('saved');
 }
