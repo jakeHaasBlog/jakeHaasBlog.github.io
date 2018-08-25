@@ -129,6 +129,7 @@ function filterImage(){
 		generateCircles();
 	}
 	displayImage.src = canvas.toDataURL();
+	savePressed();
 }
 
 
@@ -266,6 +267,7 @@ function generateCircles(){
 		} else {
 			drawCircles();
 			displayImage.src = canvas.toDataURL();
+			savePressed();
 		}
 	} else {
 		if (itter < bubbleInputs){
@@ -278,9 +280,9 @@ function generateCircles(){
 		} else {
 			drawCircles();
 			displayImage.src = canvas.toDataURL();
+			savePressed();
 		}
 	}
-
 }
 
 
@@ -316,6 +318,7 @@ function drawCircles(){
 		context.fill();
 		
 	}
+	displayImage.src = canvas.toDataURL();
 }
 
 
@@ -389,4 +392,5 @@ function savePressed(){
 	saveButton.href = canvas.toDataURL();
 	canvas.width = imageWidth * 2;
 	context.putImageData(tmpFullImage, 0, 0);
+	alert('saved');
 }
