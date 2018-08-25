@@ -6,20 +6,28 @@
 	<body>
 		<a href="../projectsPage.html">Back</a>
 		<h1>Image Filter!</h1>
-		<!--  <canvas id="can"></canvas>  -->
+
+		<text id="percent" style="display: inline-block; margin: auto; color: #fff; text-align: center; width: 100%;">100%</text>
+
 		<img id="finalImage" src="initialImage.png">
 
-		<input type="file" id="inputFileButton">
-		<label id="inLabel" for="inputFileButton">Choose Image</label>
+		<div id="buttonsDiv">
+			<input type="file" id="inputFileButton">
+			<label id="inLabel" for="inputFileButton">Choose Image</label>
 
-		<div id='saveDiv'>
-			<a id="saveLink" download>Save Image Result</a>
+			<div id='saveDiv'>
+				<a id="saveLink" download>Save Image Result</a>
+			</div>
+
+			<div id=reloadDiv>
+				<button id='reload'>Reload</button>
+			</div>
+
+			<div id="animdiv">
+				Play Animations
+				<div style="display: block; width: 13px; margin: auto; border-style: solid; border-radius: 4px; border-width: 2px;"><input type='checkbox' id='animCheckbox'></div>
+			</div>
 		</div>
-
-		<div id=reloadDiv>
-			<button id='reload'>Reload</button>
-		</div>
-
 
 
 		<div id="inputs">
@@ -47,6 +55,7 @@
 		<div style='display: block; margin: auto; width: 90%; color: #fff; background: #111;'>
 			<h2>Tips on using the image filter</h2>
 
+			Originally I was planning on making this image filter animated so that you could see how your image was being produced.
 		</div>
 
 		<script src="myp5Script.js"></script>

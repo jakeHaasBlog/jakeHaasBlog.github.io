@@ -1,4 +1,7 @@
 
+var percent = document.getElementById('percent');
+var totalCalcs = 0;
+var currentCalc = 0;
 
 var canvas = document.createElement("canvas");
 var context = canvas.getContext('2d');
@@ -18,6 +21,8 @@ var bubblesPerInInput = document.getElementById('bubblesPerInInput');
 var colorModeInput = document.getElementById('colorModeInput');
 var minBrightnessInput = document.getElementById('minBrightnessInput');
 
+var showAnimationBox = document.getElementById('animCheckbox');
+
 reload.onclick = reloadFunction;
 function reloadFunction(){
 	getInputs();
@@ -30,7 +35,10 @@ var bubbleInputs;
 var colorMode;
 var minBrightness;
 
+var showAnimations;
+
 function getInputs(){
+	itter = 0;
 	bubbleInputs = Number(bubbleInputsInput.value);
 	bubblesPerInput = Number(bubblesPerInInput.value);
 	colorMode = colorModeInput.value;
@@ -59,6 +67,8 @@ function getInputs(){
 	if (isNaN(minBrightness)){
 		minBrightness = 0;
 	}
+
+	showAnimations = showAnimationBox.checked;
 
 }
 
@@ -109,7 +119,9 @@ function initImageLoader(){
 }
 
 function filterImage(){
+	currentCalc = 0;
 	getInputs();
+	totalCalcs = bubbleInputs * bubblesPerInput;
 	if (colorMode == 'sorted'){
 		sortImage();
 	} else {
@@ -236,62 +248,74 @@ function clearCircles(){
 }
 
 
-
+var itter;
+var expo;
 function generateCircles(){
-	
-	var randX;
-	var randY;
-	for (var cir = 0; cir < bubbleInputs; cir++){
-
-		for (var c = 0; c < bubblesPerInput; c++){
-			randX = Math.floor(Math.random() * imageWidth);
-			randY = Math.floor(Math.random() * imageHeight);
-			circles.push(new Circle(randX, randY));
+	if (showAnimations){
+		var speed = 10;
+		if ((itter / bubbleInputs)*100 > 50) speed = 50;
+		for (var i = 0; i < speed; i++){
+			updateCircles();
+			itter++;
 		}
-
-
-		for (var i = 0; i < circles.length; i++){
-			if (circles[i].draw == false) circles.remove[i];
-			circles[i].grow();
+		drawCircles();
+		percent.innerHTML = ((itter / bubbleInputs)*100).toFixed(2) + "%";
+		displayImage.src = canvas.toDataURL();
+		if (itter < bubbleInputs) {
+			window.requestAnimationFrame(generateCircles);
+		} else {
+			drawCircles();
+			displayImage.src = canvas.toDataURL();
+		}
+	} else {
+		if (itter < bubbleInputs){
+			for (var i = 0; i < 100; i++){
+				updateCircles();
+			}
+			itter+=100;
+			percent.innerHTML = ((itter / bubbleInputs)*100).toFixed(2) + "%";
+			window.requestAnimationFrame(generateCircles);
+		} else {
+			drawCircles();
+			displayImage.src = canvas.toDataURL();
 		}
 	}
 
+}
 
 
+function updateCircles(){
 
-	// context.strokeStyle = 'rgb(255, 255, 255)';
-	// for (var i = 0; i < circles.length; i++){
-	// 	if (circles[i].draw){
-	// 		context.beginPath();
-	// 		context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, 2*Math.PI, false);
-	// 		context.stroke();
-	// 	}
-	// }
-	context.fillStyle = 'rgb(255, 255, 255)';
-	var r, g, b;
-	var originData = context.getImageData(0, 0, imageWidth, imageHeight).data;
+	currentCalc++;
+	for (var c = 0; c < bubblesPerInput; c++){
+		randX = Math.floor(Math.random() * imageWidth);
+		randY = Math.floor(Math.random() * imageHeight);
+		circles.push(new Circle(randX, randY));
+	}
+
+
 	for (var i = 0; i < circles.length; i++){
-		if (circles[i].draw){
-
-			r = newImageData.data[getXY(circles[i].x, circles[i].y)];
-			g = newImageData.data[getXY(circles[i].x, circles[i].y) + 1];
-			b = newImageData.data[getXY(circles[i].x, circles[i].y) + 2];
-
-			context.fillStyle = 'rgb('+r+', '+g+', '+b+')';
-
-			context.beginPath();
-			context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, 2*Math.PI, false);
-			context.fill();
-		}
+		circles[i].grow();
 	}
+	
+}
 
 
+function drawCircles(){
+	var r, g, b;
+	for (var i = 0; i < circles.length; i++){
 
-	// context.beginPath();
-	// context.arc(500, 50, 50, 0, 2 * Math.PI, false);
-	// context.stroke();
+		r = newImageData.data[getXY(circles[i].x, circles[i].y)];
+		g = newImageData.data[getXY(circles[i].x, circles[i].y) + 1];
+		b = newImageData.data[getXY(circles[i].x, circles[i].y) + 2];
 
-	//context.putImageData(newImageData, imageWidth, 0);
+		context.fillStyle = 'rgb('+r+', '+g+', '+b+')';
+
+		context.beginPath();
+		context.arc(circles[i].x, circles[i].y, circles[i].radius, 0, 2*Math.PI, false);
+		context.fill();
+		
+	}
 }
 
 
@@ -313,7 +337,6 @@ function distanceBetweenPoints(x, y, x2, y2){
 var circles = new Array();
 class Circle{
 	constructor(x, y){
-		this.draw = true;
 		this.fullGrown = false;
 		this.x = x + imageWidth;
 		this.y = y;

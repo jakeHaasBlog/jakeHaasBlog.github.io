@@ -14,14 +14,12 @@ input {
 	margin: auto;
 }
 
-#saveDiv {
-	width: 124px;
+#buttonsDiv {
 	display: block;
-	background: #fff;
-	border-style: solid;
-	border-radius: 4px;
-	text-align: center;
+	width: 90%;
+	height: auto;
 	margin: auto;
+	background: #222;
 }
 
 #inputFileButton {
@@ -33,30 +31,9 @@ input {
 	z-index: -1;
 }
 
-
-#inLabel {
-	display: block;
-	background: #fff;
-	color: #000;
-	margin: auto;
-	width: 124px;
-	border-style: solid;
-	border-radius: 4px;
-	text-align: center;
-}
-
-
-#reloadDiv{
-	display: block;
-	margin: auto;
-	width: 124px;
-	border-style: solid;
-	border-radius: 4px;
-	background: #fff;
-}
-
 #reload{
-	width: 124px;
+	width: 100%;
+	height: auto;
 }
 
 
@@ -94,3 +71,49 @@ input {
 .inputField {
 	width: 100%;
 }
+
+
+
+
+#inLabel {
+	display: inline-block;
+	background: #fff;
+	color: #000;
+	width: calc(25% - 3px);
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	height: 60px;
+}
+
+#saveDiv {
+	display: inline-block;
+	width: calc(25% - 3px);
+	background: #fff;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	height: 60px;
+}
+
+#reloadDiv{
+	display: inline-block;
+	width: calc(25% - 3px);
+	background: #fff;
+	padding: 0;
+	margin: 0;
+	height: 60px;
+}
+
+
+#animdiv {
+	display: inline-block;
+	width: calc(25% - 3px);
+	background: #fff; 
+	color: #000;  
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	height: 60px;
+}
+
