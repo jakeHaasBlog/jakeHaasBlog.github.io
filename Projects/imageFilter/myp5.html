@@ -64,7 +64,15 @@
 		<div style='display: block; margin: auto; width: 90%; color: #fff; background: #111;'>
 			<h2>Tips on using the image filter</h2>
 
-			Originally I was planning on making this image filter animated so that you could see how your image was being produced.
+			This program uses the html canvas element to render but not display the final image, meaning that if you right click the image(html img element) and 'save as' then you will not get your image in full quality. Although the produced image is shrunk to fit in my webpage(yes im a narcisist) if you click the 'save result' link the underlying javascript will send you a full quality image straight from the canvas element itself.
+			<br><br>
+			To understand the meaning of the text field options you must first understand how this program produces a finalized image. First your image is turned into r,g,b,a data and put in a buffer(really big array), then over time 'bubbles seeds' are slowly placed onto the image, these bubbles grow until they hit another bubble. <br>
+			- The 'Number of Inputs' field determines how many frames the 'simulation' lasts.<br>
+			- The 'Bubbles per input' field determines how many new 'bubble seeds' get added every frame.<br>
+			- The 'Color mode' field is pretty self explanitory, type in the words written below it EXACTLY the way they are, otherwize it will default to 'full colour'.<br>
+			- The 'minimum brightness' field determines how bright a pixel has to be in order for a 'bubble seed' to be placed on it.<br>
+			<br>
+			If you want to see these processes in action click the 'Play Animations' checkbox. Warning, the image will load MUCH slower if animations are playing.
 		</div>
 
 		<script src="myp5Script.js"></script>
