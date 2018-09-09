@@ -42,15 +42,89 @@ var balls = new Array();
 
 function perColor(x, y){
 
-	//var n = Math.round(random()*16777215);
-	//var n = Math.round(noise(x, y)*255);
-	//var hex = '#'+n.toString(16);
+	var ballRstr = document.getElementById("rInput").value;
+	var ballGstr = document.getElementById("gInput").value;
+	var ballBstr = document.getElementById("bInput").value;
+	var ballAstr = document.getElementById("aInput").value;
 
-	var r = ballr;
-	var g = ballg;
-	var b = ballb;
-	var a = balla;
+	var redOne = '';
+	var redTwo = '';
+
+	var greenOne = '';
+	var greenTwo = '';
+
+	var blueOne = '';
+	var blueTwo = '';
+
+	var alphaOne = '';
+	var alphaTwo = '';
+
+	var atRedDash = false;
+	for (var i = 0; i < ballRstr.length; i++){
+		if (ballRstr.charAt(i) == '-'){
+			atRedDash = true;
+			i++;
+		}
+		if (!atRedDash) {
+			redOne += ballRstr.charAt(i);
+		}
+		if (atRedDash) {
+			redTwo += ballRstr.charAt(i);
+		}
+	}
+	var atGreenDash = false;
+	for (var i = 0; i < ballGstr.length; i++){
+		if (ballGstr.charAt(i) == '-'){
+			atGreenDash = true;
+			i++;
+		}
+		if (!atGreenDash) {
+			greenOne += ballGstr.charAt(i);
+		}
+		if (atGreenDash) {
+			greenTwo += ballGstr.charAt(i);
+		}
+	}
+	var atBlueDash = false;
+	for (var i = 0; i < ballBstr.length; i++){
+		if (ballBstr.charAt(i) == '-'){
+			atBlueDash = true;
+			i++;
+		}
+		if (!atBlueDash) {
+			blueOne += ballBstr.charAt(i);
+		}
+		if (atBlueDash) {
+			blueTwo += ballBstr.charAt(i);
+		}
+	}
+	var atAlphaDash = false;
+	for (var i = 0; i < ballAstr.length; i++){
+		if (ballAstr.charAt(i) == '-'){
+			atAlphaDash = true;
+			i++;
+		}
+		if (!atAlphaDash) {
+			alphaOne += ballAstr.charAt(i);
+		}
+		if (atAlphaDash) {
+			alphaTwo += ballAstr.charAt(i);
+		}
+	}
+
+
+	if (redTwo == '') redTwo = redOne;
+	if (greenTwo == '') greenTwo = greenOne;
+	if (blueTwo == '') blueTwo = blueOne;
+	if (alphaTwo == '') alphaTwo = alphaOne;
+	var r = (Math.random() * (parseInt(redTwo) - parseInt(redOne))) + parseInt(redOne);
+	var g = (Math.random() * (parseInt(greenTwo) - parseInt(greenOne))) + parseInt(greenOne);
+	var b = (Math.random() * (parseInt(blueTwo) - parseInt(blueOne))) + parseInt(blueOne);
+	var a = (Math.random() * (parseInt(alphaTwo) - parseInt(alphaOne))) + parseInt(alphaOne);
 	var hex = color(r, g, b, a);
+
+
+	console.log("rstr: " + ballRstr + "  redOne: " + redOne + "  redTwo: " + redTwo);
 	
 	return hex;
 }
@@ -165,11 +239,6 @@ function generateNewCanvas(){
 
 	lineLength = parseInt(document.getElementById("lengthInput").value);
 	lineWeight = parseInt(document.getElementById("weightInput").value);
-
-	ballr = parseInt(document.getElementById("rInput").value);
-	ballg = parseInt(document.getElementById("gInput").value);
-	ballb = parseInt(document.getElementById("bInput").value);
-	balla = parseInt(document.getElementById("aInput").value);
 
 	backr = parseInt(document.getElementById("backrInput").value);
 	backg = parseInt(document.getElementById("backgInput").value);
