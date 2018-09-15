@@ -153,9 +153,9 @@ function makeBranch(x, y, r, g, b, length, startAngle, angleChange, branches, it
 			newG = g + greenChange;
 			newB = b + blueChange;
 
-			newR = newR % 255;
-			newG = newG % 255;
-			newB = newB % 255;
+			newR = (newR-1) % 255;
+			newG = (newG-1) % 255;
+			newB = (newB-1) % 255;
 
 			makeBranch(toX, toY, newR, newG, newB, length + lineChange, inputAngle, angleChange + lineAngleChange, branches + branchesChange, itter+1);
 		}
