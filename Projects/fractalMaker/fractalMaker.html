@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="fractalMaker.css">
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123759447-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-123759447-1');
+	</script>
+	</head>
+
+	<body>
+
+		<a href="../projectsPage.html">Back</a>
+
+		<h1 id="title">Fractal Maker</h1>
+		<img id="fractalImage" src="thumbnailFractal.png">
+
+		<h2 style="text-align: center; color: #fff; margin-bottom: 10px;">Inputs</h2>
+
+		<div class="inputsHolder">
+
+			<button class="buttons" id="defaults">Default</button>
+			<button class="buttons" id="generate">Generate</button>
+			<a class="buttons" id="savebutton" download>Save</a>
+
+			<br>
+
+			<div class="input">
+				<h4 class="inputTitle">Background&nbspR</h4>
+				<br>
+				<input id="backgroundR" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Background&nbspG</h4>
+				<br>
+				<input id="backgroundG" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Background&nbspB</h4>
+				<br>
+				<input id="backgroundB" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Background&nbspA</h4>
+				<br>
+				<input id="backgroundA" class="inputField" type="textfield">
+			</div>
+
+			<br>
+
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspR</h4>
+				<br>
+				<input id="lineR" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspG</h4>
+				<br>
+				<input id="lineG" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspB</h4>
+				<br>
+				<input id="lineB" class="inputField" type="textfield">
+			</div>
+
+			<br>
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspR&nbspChange</h4>
+				<br>
+				<input id="lineRchange" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspG&nbspChange</h4>
+				<br>
+				<input id="lineGchange" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspB&nbspChange</h4>
+				<br>
+				<input id="lineBchange" class="inputField" type="textfield">
+			</div>
+
+			<br>
+
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspLength</h4>
+				<br>
+				<input id="lineLength" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Length&nbspChange</h4>
+				<br>
+				<input id="lengthChange" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Angle&nbspStart</h4>
+				<br>
+				<input id="angleStart" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Angle&nbspChange</h4>
+				<br>
+				<input id="angleChange" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Branches</h4>
+				<br>
+				<input id="branches" class="inputField" type="textfield">
+			</div>
+
+
+			<div class="input">
+				<h4 class="inputTitle">Line&nbspWeight</h4>
+				<br>
+				<input id="lineWeight" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Branches&nbspChange</h4>
+				<br>
+				<input id="branchesChange" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Branch&nbspSeeds</h4>
+				<br>
+				<input id="branchSeeds" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Itterations</h4>
+				<br>
+				<input id="itterations" class="inputField" type="textfield">
+			</div>
+
+			<br>
+
+			<div class="input">
+				<h4 class="inputTitle">Width</h4>
+				<br>
+				<input id="width" class="inputField" type="textfield">
+			</div>
+			<div class="input">
+				<h4 class="inputTitle">Height</h4>
+				<br>
+				<input id="height" class="inputField" type="textfield">
+			</div>
+		</div>
+
+
+
+
+		<script src="fractalMaker.js"></script>
+	</body>
+</html>
