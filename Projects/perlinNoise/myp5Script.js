@@ -123,9 +123,6 @@ function perColor(x, y){
 	var a = (Math.random() * (parseInt(alphaTwo) - parseInt(alphaOne))) + parseInt(alphaOne);
 	var hex = color(r, g, b, a);
 
-
-	console.log("rstr: " + ballRstr + "  redOne: " + redOne + "  redTwo: " + redTwo);
-	
 	return hex;
 }
 

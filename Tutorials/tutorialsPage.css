@@ -7,6 +7,7 @@ a {
 }
 
 #projectDiv {
+	display: inline-block;
 	width: 98%;
 	height: auto;
 	margin-left: 1%;
@@ -59,10 +60,12 @@ a {
 
 
 .tutorialDiv {
+	display: inline-block;
 	background: #111;
 	margin: 1%;
 	width: 98%;
 	height: auto;
+	padding-bottom: 10px;
 }
 
 .tutorialTitle {
@@ -81,7 +84,7 @@ a {
 }
 
 .twoPart {
-	display: block;
+	display: inline-block;
 	width: 48%;
 	margin-left: 1%;
 	margin-right: 1%;
@@ -97,7 +100,7 @@ a {
 	margin-left: 1%; 
 	float: left;
 	background: #222;
-	display: block;
+	display: inline-block;
 }
 
 .tab {

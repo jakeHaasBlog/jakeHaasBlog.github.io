@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123759447-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-123759447-1');
+		</script>
+
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.js"></script>
+
+
+		<link rel="stylesheet" type="text/css" href="p5Graphics.css">
+	</head>
+
+	<body>
+		<div id=mainDiv>
+			<a href="../../tutorialsPage.html">Back</a>
+			<div id="title" style="color: #fff"><h1>Using P5.js Library</h1></div>
+			
+			<div id="mainTextBody">
+				<div id="asciiClass">
+					In this section I will be color coding the various languages to make them more distinguishable just like in the previous tutorials. 
+					<br><br>
+					<div class="code">
+						JavaScript code is in pink
+					</div>
+					<div class="htmlCode">
+						html is in blue
+					</div>
+					<div class="cssCode">
+						css is in green
+					</div>
+					<div class="javaCode">
+						Java is in orange
+					</div>
+
+					Alright, so lets start writing some code! To begin with we need to import the p5.js library, we will do this in our HTMl like this:
+
+					<div class="htmlCode">
+						<pre>
+&lt!DOCTYPE html>
+
+&lthtml>
+	&lthead>
+		&ltscript src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js">&lt/script>
+		&ltscript src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js">&lt/script>
+		&ltscript src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.sound.js">&lt/script>
+	&lt/head>
+&lt/html>
+						</pre>
+					</div>
+
+					What we are doing with this code is including the P5.js library through the internet by linking your html page directly to a hosted version of P5.js. These links may be out of date when you are reading this(I doubt it however) so <a href="https://cdnjs.com/libraries/p5.js">here</a> is a link to their website directly.
+
+					<br><br>
+
+					Next, we will go to our blank javascript file and write these two functions:
+
+					<div class="code">
+						<pre>
+
+function setup(){
+	
+}
+
+function draw(){
+	
+}
+
+						</pre>
+					</div>
+
+					These two functions are internally called within the P5 library, so all you have to do to draw something is create a canvas and call some methods. Note that the draw functon runs continuously in a loop. So lets draw somrthing then!
+
+					<div class="code">
+						<pre>
+
+var canvas;
+
+function setup(){
+	canvas = createCanvas(500, 500);
+}
+
+var x = 0;
+function draw(){
+	x++;
+
+	fill(color(255, 255, 255));
+	fillRect(0, 0, 500, 500);
+
+	stroke(color(255, 0, 0));
+	fill(color(0, 0, 0));
+	ellipse(x, 250, 200);
+}
+							
+						</pre>
+					</div>
+
+					This will create a circle that moves across the screen easy as that!
+
+					<br><br>
+
+					So this pretty much concludes setting up and displaying with P5.js, for more information about methods and tools included in P5.js visti their website <a href="https://p5js.org/reference/">here</a>, unlike most programming sites out there this one is actually very helpfull and gives you just enough information to do what you want to do.
+
+					<br><br>
+
+					So, now lets take a look back at the ascii game we made in the first tutorial and see what we can do to improve it, specifically how we can improve the display function using P5. We will start by looking at a function in P5 for displaying strings in color.
+
+					<div class="code">
+						<pre>
+var canvas;
+
+function setup(){
+	canvas = createCanvas(500, 500);
+	textSize(32);
+}
+
+function draw(){
+	fill(255, 255, 0);
+	text('word', 10, 10);
+}
+						</pre>
+					</div>
+
+					With this we have the ability to display characters and can completely replace the old display function with this new and improved one:
+
+					<div class="code">
+						<pre>
+var canvas;
+
+function setup(){
+	canvas = createCanvas(500, 500);
+}
+
+function draw(){
+	display();
+}
+
+
+function display(){
+	fill(0);
+	rect(0, 0, 500, 500);
+
+	clearForeground();
+
+	bob.update();
+
+	var r, g, b, c;
+	for (var y = 0; y < HEIGHT; y++){
+		for (var x = 0; x < WIDTH; x++){
+			r = foreground.asciiArray[x][y].r;
+			g = foreground.asciiArray[x][y].g;
+			b = foreground.asciiArray[x][y].b;
+			c = foreground.asciiArray[x][y].c;
+
+			fill(r, g, b);
+			text(c, x * xOffset, y * yOffset);
+		}
+	}
+}
+						</pre>
+					</div>
+
+					In many ways this is even easier than the first way in which we displayed, and has many benefits. Firsly, the frame rate will be MUCH higher, and we can use any sized charactor we want without having to use a monospace font or ever have formatting issues.
+
+					<br><br>
+
+					The last thing we have to do is pack this canvas into a div. This could not be any easier:
+
+					<div class="code">
+						<pre>
+							
+canvas.parent('myDiv');
+
+						</pre>
+					</div>
+
+					With this you will be able to position your canvas by simply moving around the div using css, or whatever method you choose. So here is the final product minus the frame rate limiter.
+
+					<div id="finalCanvas"></div>
+
+					In order to add a frame rate limiter in P5.js you must simply call one function in our setup function:
+
+					<div class='code'>
+						<pre>
+							
+function setup(){
+	canvas = createCanvas();
+	frameRate(30); // sets frame rate to 30
+}
+
+						</pre>
+					</div>
+
+					Easy as that! Cool, so now you have the ability to draw things with P5.js, I can't recomend enough that you check out there website because I havent even skratched the surface of what you can do with P5(Also yes, you can do 3d graphics)
+
+					<br><a href="p5PerlinNoise.html">Perlin noise page</a><br><br>
+
+				</div>
+			</div>
+
+		</div>
+
+
+		<script src="p5GraphicsAsciiGames.js"></script>
+
+	</body>
+</html>
