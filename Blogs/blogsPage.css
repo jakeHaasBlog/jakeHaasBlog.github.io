@@ -76,3 +76,30 @@ a {
 	margin-left: 20px;
 	color: #fff;
 }
+
+
+#timeline {
+	display: block;
+	background: #333;
+	width: 80%;
+	height: 80px;
+	margin-left: calc(10% - 4px);
+	margin-top: 70px;
+	border-style: dashed;
+	border-color: rgb(255, 100, 0);
+	border-width: 4px;
+	margin-bottom: 50px;
+}
+
+#blogspace {
+	display: block;
+	background: #333;
+	width: 80%;
+	height: 500px;
+	margin-left: calc(10% - 4px);
+	margin-top: 70px;
+	border-style: dashed;
+	border-color: rgb(255, 100, 0);
+	border-width: 4px;
+	margin-bottom: 50px;
+}
