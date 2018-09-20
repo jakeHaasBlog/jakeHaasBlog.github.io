@@ -80,7 +80,6 @@ a {
 
 #timeline {
 	display: block;
-	background: #333;
 	width: 80%;
 	height: 80px;
 	margin-left: calc(10% - 4px);
@@ -95,7 +94,8 @@ a {
 	display: block;
 	background: #333;
 	width: 80%;
-	height: 500px;
+	min-height: 300px;
+	height: auto;
 	margin-left: calc(10% - 4px);
 	margin-top: 70px;
 	border-style: dashed;

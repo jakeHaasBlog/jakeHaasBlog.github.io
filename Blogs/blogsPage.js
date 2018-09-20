@@ -1,6 +1,43 @@
 
 // timeline
 
+
+
+var numberOfPages = 3;
+var currentPageNumber = 1;
+
+var blogspace = document.getElementById('blogspace');
+
+
+var blogPages = []; // this aray holds all blogs, they must have a run function
+					// the run function is called page changes
+
+
+var runDNA = true;
+var canvasCopy = document.createElement('canvas');
+var canvasCopyContext = canvasCopy.getContext('2d');
+var canvasCopyData;
+
+function updateBlogSpace(){
+	blogPages[currentPageNumber-1].run();
+}
+
+var prePage = currentPageNumber;
+var wasMousePressed = false;
+function updateBlogspaceCondition(){
+
+	var touch = new TouchEvent('touch');
+
+	for (var i = 0; i < touch.touches.length; i++){
+		markerX = touch.touches[i].clientX;
+	}
+
+	if (currentPageNumber != prePage){
+		prePage = currentPageNumber;
+		updateBlogSpace();
+	}
+}
+
 var timelineCanvas = document.getElementById('timeline');
 var timelineContext = timelineCanvas.getContext('2d');
 
@@ -13,6 +50,9 @@ function mouseDown(event){
 function mouseUp(event){
 	mousePressed = false;
 }
+function mouseOutOfDna(){
+	mousePressed = false;
+}
 function mouseMove(event){
 	var rect = timelineCanvas.getBoundingClientRect();
 	mouse = {
@@ -23,7 +63,8 @@ function mouseMove(event){
 
 timelineCanvas.addEventListener('mousedown', mouseDown);
 timelineCanvas.addEventListener('mouseup', mouseUp);
-timelineCanvas.addEventListener('mousemove', mouseMove)
+timelineCanvas.addEventListener('mousemove', mouseMove);
+timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
 
 var timeLinePercent = 0;
 var markerX = 0;
@@ -62,17 +103,9 @@ for (var i = 0; i < 300; i++){
 	});
 }
 
-function drawCanvas(){
-	timelineCanvas.width = window.innerWidth * 0.8 - 4;
-	timelineCanvas.width = timelineCanvas.offsetWidth;
-	timeLinePercent = mouse.x / timelineCanvas.width;
+function drawDNAonce(){
 	timelineContext.fillStyle = 'rgb(0, 0, 0)';
 	timelineContext.fillRect(0, 0, timelineCanvas.width, timelineCanvas.height);
-
-	if (mousePressed){
-		markerX = mouse.x;
-	}
-
 	// z between 3 and 11
 	var brightness;
 	for (var r = 0; r < dnaStrandsRed.length; r++){
@@ -108,6 +141,23 @@ function drawCanvas(){
 	}
 
 	rotateVar--;
+}
+
+function drawCanvas(){
+	timelineCanvas.width = window.innerWidth * 0.8 - 4;
+	timelineCanvas.width = timelineCanvas.offsetWidth;
+	timeLinePercent = markerX / timelineCanvas.width;
+
+	if (mousePressed){
+		markerX = mouse.x;
+	}
+
+	decidePage();
+
+	if (runDNA)drawDNAonce();
+	else if (!runDNA && mousePressed) drawDNAonce();
+
+	updateBlogspaceCondition();
 	window.requestAnimationFrame(drawCanvas);
 }
 
@@ -142,7 +192,12 @@ function makeChromosomes(r){
 	timelineContext.stroke();
 }
 
-drawCanvas();
 
+function decidePage(){
+	currentPageNumber = Math.round(timeLinePercent * (numberOfPages-1));
+	currentPageNumber++;
+}
+
+drawCanvas();
 
 
