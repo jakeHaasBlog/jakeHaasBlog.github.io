@@ -62,14 +62,6 @@ function touchStart(event){
 		y: event.clientY - rect.top
 	}
 }
-function touchend(event){
-	mousePressed = false;
-	var rect = timelineCanvas.getBoundingClientRect();
-	mouse = {
-		x: event.clientX - rect.left,
-		y: event.clientY - rect.top
-	}
-}
 
 timelineCanvas.addEventListener('mousedown', mouseDown);
 timelineCanvas.addEventListener('mouseup', mouseUp);
@@ -77,7 +69,6 @@ timelineCanvas.addEventListener('mousemove', mouseMove);
 timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
 
 timelineCanvas.addEventListener('touchstart', touchStart);
-timelineCanvas.addEventListener('touchend', touchend);
 
 var timeLinePercent = 0;
 var markerX = 0;
