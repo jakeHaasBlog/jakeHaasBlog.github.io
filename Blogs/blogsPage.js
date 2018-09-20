@@ -26,12 +26,6 @@ var prePage = currentPageNumber;
 var wasMousePressed = false;
 function updateBlogspaceCondition(){
 
-	var touch = new TouchEvent('touch');
-
-	for (var i = 0; i < touch.touches.length; i++){
-		markerX = touch.touches[i].clientX;
-	}
-
 	if (currentPageNumber != prePage){
 		prePage = currentPageNumber;
 		updateBlogSpace();
@@ -60,11 +54,28 @@ function mouseMove(event){
 		y: event.clientY - rect.top
 	}
 }
+function touchStart(){
+	mousePressed = true;
+}
+function touchend(){
+	mousePressed = false;
+}
+function touchmove(){
+	var rect = timelineCanvas.getBoundingClientRect();
+	mouse = {
+		x: event.clientX - rect.left,
+		y: event.clientY - rect.top
+	}
+}
 
 timelineCanvas.addEventListener('mousedown', mouseDown);
 timelineCanvas.addEventListener('mouseup', mouseUp);
 timelineCanvas.addEventListener('mousemove', mouseMove);
 timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
+
+timelineCanvas.addEventListener('touchstart', touchStart);
+timelineCanvas.addEventListener('touchend', touchend);
+timelineCanvas.addEventListener('touchmove', touchmove);
 
 var timeLinePercent = 0;
 var markerX = 0;
