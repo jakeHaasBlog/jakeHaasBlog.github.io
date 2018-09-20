@@ -55,11 +55,14 @@ function mouseMove(event){
 	}
 }
 function touchStart(event){
+	var rect;
 	mousePressed = true;
-	//var rect = timelineCanvas.getBoundingClientRect();
-	mouse = {
-		x: event.clientX,
-		y: event.clientY
+	for (var i = 0; < event.touches.length; i++){
+		rect = timelineCanvas.getBoundingClientRect();
+		mouse = {
+			x: event.clientX - rect.left,
+			y: event.clientY - rect.top
+		}
 	}
 }
 function touchend(event){
