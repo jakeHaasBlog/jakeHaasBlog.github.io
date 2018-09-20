@@ -56,11 +56,14 @@ function mouseMove(event){
 }
 function touchStart(event){
 	mousePressed = true;
-	var rect = timelineCanvas.getBoundingClientRect();
+	//var rect = timelineCanvas.getBoundingClientRect();
 	mouse = {
-		x: event.clientX - rect.left,
-		y: event.clientY - rect.top
+		x: event.clientX,
+		y: event.clientY
 	}
+}
+function touchend(event){
+	mousePressed = false;
 }
 
 timelineCanvas.addEventListener('mousedown', mouseDown);
@@ -69,6 +72,7 @@ timelineCanvas.addEventListener('mousemove', mouseMove);
 timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
 
 timelineCanvas.addEventListener('touchstart', touchStart);
+timelineCanvas.addEventListener('touchend', touchend);
 
 var timeLinePercent = 0;
 var markerX = 0;
