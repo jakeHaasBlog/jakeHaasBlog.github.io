@@ -4,7 +4,7 @@
 
 
 var blog3HTML = 
- ""
+ "<h1 style='text-align: center; width: 100%; color: #bd9b16'>My New Laptop Section</h1>"
 +""
 +""
 +""
@@ -15,6 +15,7 @@ var blog3 = {
 
 	run: function(){
 
+		blogspace.style.background = '#080808';
 		blogspace.innerHTML = blog3HTML;
 
 	}

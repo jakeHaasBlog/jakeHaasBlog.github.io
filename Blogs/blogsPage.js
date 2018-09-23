@@ -19,6 +19,19 @@ var canvasCopyContext = canvasCopy.getContext('2d');
 var canvasCopyData;
 
 function updateBlogSpace(){
+	blogspace.style.background = "#111";
+	blogspace.style.borderStyle = 'dashed';
+	blogspace.style.display = 'block';
+	blogspace.style.width = '80%';
+	blogspace.style.minHeight = '300px';
+	blogspace.style.height = 'auto';
+	blogspace.style.marginLeft = 'calc(10% - 4px)';
+	blogspace.style.marginTop = '70px';
+	blogspace.style.borderStyle = 'dashed';
+	blogspace.style.borderColor = 'rgb(255, 100, 0)'
+	blogspace.style.borderWidth = '4px';
+	blogspace.style.marginBottom = '50px';
+	
 	blogPages[currentPageNumber-1].run();
 }
 
@@ -54,28 +67,12 @@ function mouseMove(event){
 		y: event.clientY - rect.top
 	}
 }
-function touchStart(event){
-	var rect;
-	mousePressed = true;
-	for (var i = 0; < event.touches.length; i++){
-		rect = timelineCanvas.getBoundingClientRect();
-		mouse = {
-			x: event.clientX - rect.left,
-			y: event.clientY - rect.top
-		}
-	}
-}
-function touchend(event){
-	mousePressed = false;
-}
 
 timelineCanvas.addEventListener('mousedown', mouseDown);
 timelineCanvas.addEventListener('mouseup', mouseUp);
 timelineCanvas.addEventListener('mousemove', mouseMove);
 timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
 
-timelineCanvas.addEventListener('touchstart', touchStart);
-timelineCanvas.addEventListener('touchend', touchend);
 
 var timeLinePercent = 0;
 var markerX = 0;
