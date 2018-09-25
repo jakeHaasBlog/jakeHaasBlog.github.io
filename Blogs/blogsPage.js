@@ -202,6 +202,11 @@ function makeChromosomes(r){
 
 
 function decidePage(){
+	timelineCanvas.width = window.innerWidth * 0.8 - 4;
+	timelineCanvas.width = timelineCanvas.offsetWidth;
+	if (markerX > timelineCanvas.width) markerX = timelineCanvas.width;
+	timeLinePercent = markerX / timelineCanvas.width;
+
 	currentPageNumber = Math.round(timeLinePercent * (numberOfPages-1));
 	currentPageNumber++;
 }
