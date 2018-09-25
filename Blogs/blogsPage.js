@@ -80,7 +80,7 @@ function fSlide(event){
 		y: event.changedTouches.item(0).clientY - rect.top
 	}
 }
-timelineCanvas.addEventListener('touchmove', fSlide);
+timelineCanvas.addEventListener('touchstart', fSlide);
 
 
 var timeLinePercent = 0;
