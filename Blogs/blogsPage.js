@@ -73,6 +73,15 @@ timelineCanvas.addEventListener('mouseup', mouseUp);
 timelineCanvas.addEventListener('mousemove', mouseMove);
 timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
 
+function fSlide(event){
+	var rect = timelineCanvas.getBoundingClientRect();
+	mouse = {
+		x: event.changedTouches.item(0).clientX - rect.left,
+		y: event.changedTouches.item(0).clientY - rect.top
+	}
+}
+timelineCanvas.addEventListener('touchmove', fSlide);
+
 
 var timeLinePercent = 0;
 var markerX = 0;
