@@ -76,11 +76,21 @@ timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
 function fSlide(event){
 	var rect = timelineCanvas.getBoundingClientRect();
 	mouse = {
-		x: event.clientX - rect.left,
-		y: event.clientY - rect.top
+		x: event.touches[0].clientX - rect.left,
+		y: event.touches[0].clientY - rect.top
 	}
+	mousePressed = true;
 }
-timelineCanvas.addEventListener('touchstart', fSlide);
+function fSlideEnd(event){
+	var rect = timelineCanvas.getBoundingClientRect();
+	mouse = {
+		x: event.touches[0].clientX - rect.left,
+		y: event.touches[0].clientY - rect.top
+	}
+	mousePressed = false;
+}
+timelineCanvas.addEventListener('touchstart', fSlide, false);
+timelineCanvas.addEventListener('touchend', fSlideEnd, false);
 
 
 var timeLinePercent = 0;
