@@ -76,8 +76,8 @@ timelineCanvas.addEventListener('mouseout', mouseOutOfDna);
 function fSlide(event){
 	var rect = timelineCanvas.getBoundingClientRect();
 	mouse = {
-		x: event.changedTouches.item(0).clientX - rect.left,
-		y: event.changedTouches.item(0).clientY - rect.top
+		x: event.clientX - rect.left,
+		y: event.clientY - rect.top
 	}
 }
 timelineCanvas.addEventListener('touchstart', fSlide);
