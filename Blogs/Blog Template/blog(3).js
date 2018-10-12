@@ -74,12 +74,18 @@ var blog3 = {
 
 	loop: function(){
 
+		var then = new Date().getTime();
+		var frameInterval = 1000/25; // 25fps
+
 		if (document.getElementById('image1').checked == true){
 			document.getElementById('compImg').src = 'https://product-images.www8-hp.com/digmedialib/prodimg/lowres/c05972398.png';
 		} else {
 			document.getElementById('compImg').src = 'Blog Template/specter-transparent.png';
 		}
 
+		while (then - new Date().getTime() > frameInterval){
+			// do nothing
+		}
 		if (currentPageNumber == 3) window.requestAnimationFrame(blog3.loop);
 	},
 
