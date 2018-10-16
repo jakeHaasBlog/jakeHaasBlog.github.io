@@ -3,7 +3,7 @@
 
 
 
-var numberOfPages = 3;
+var numberOfPages = 4;
 var currentPageNumber = 1;
 
 var blogspace = document.getElementById('blogspace');
