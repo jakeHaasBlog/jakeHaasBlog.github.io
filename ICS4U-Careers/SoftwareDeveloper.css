@@ -1,0 +1,162 @@
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #222;
+}
+
+header {
+	background: #111;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	padding-top: 30px;
+	padding-bottom: 5px;
+}
+
+a {
+	color: green;
+}
+
+li {
+	color: white;
+	font-size: 20px;
+}
+
+.subtitle {
+	text-align: center; 
+	color: white; 
+	margin-top: 30px; 
+	margin-bottom: 4px; 
+	padding-bottom: 0;
+}
+
+#mainTitle {
+	color: white;
+	text-align: center;
+}
+
+#mainTitleCaption {
+	color: white;
+	text-align: center;
+}
+
+#descriptionBoard {
+	color: white;
+	background: #111;
+	width: 80%;
+	height: auto;
+	margin-left: 10%;
+	margin-top: 0;
+	font-size: 20px;
+	padding: 8px;
+}
+
+#layer2 {
+	display: inline-block;
+	width: 80%;
+	height: auto;
+	margin-left: 10%;
+	margin-top: 10px;
+	background: #111;
+	padding: 8px;
+}
+
+#layer2 div {
+	display: inline-block;
+	color: white;
+	font-size: 30px;
+	width: 100%;
+}
+
+#layer3 {
+	display: inline-block;
+	width: 80%;
+	height: auto;
+	margin-left: 10%;
+	margin-top: 10px;
+	background: #111;
+	padding: 8px;
+	margin-bottom: 50px;
+}
+
+#layer3 div {
+	display: inline-block;
+	color: white;
+	width: 96%;
+	margin-left: 1%;
+}
+
+#layer4 {
+	display: inline-block;
+	width: 80%;
+	height: auto;
+	margin-left: 10%;
+	margin-top: 10px;
+	background: #111;
+	padding: 8px;
+	margin-bottom: 50px;
+}
+
+#layer4 div {
+	display: inline-block;
+	color: white;
+	width: 96%;
+	margin-left: 1%;
+}
+
+#layer5 {
+	display: inline-block;
+	width: 80%;
+	height: auto;
+	margin-left: 10%;
+	margin-top: 10px;
+	background: #111;
+	padding: 8px;
+	margin-bottom: 50px;
+}
+
+#layer5 div {
+	display: inline-block;
+	color: white;
+	width: 96%;
+	margin-left: 1%;
+}
+
+#layer5 div ul {
+	font-size: 12px;
+}
+
+#layer6 {
+	display: inline-block;
+	width: 80%;
+	height: auto;
+	margin-left: 10%;
+	margin-top: 10px;
+	background: #111;
+	padding: 8px;
+	margin-bottom: 50px;
+}
+
+#layer6 div {
+	display: inline-block;
+	color: white;
+	width: 96%;
+	margin-left: 1%;
+}
+#layer3EducationRequirements {
+	margin-left: 10%;
+	width: 80%;
+	margin-top: 30px;
+	background: #111;
+}
+
+#worksCited {
+	display: inline-block;
+	background: #111;
+	width: 80%;
+	margin-left: 10%;
+	color: blue;
+	padding: 8px;
+	margin-bottom: 100px;
+}
