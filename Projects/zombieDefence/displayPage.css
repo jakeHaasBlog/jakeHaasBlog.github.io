@@ -1,0 +1,27 @@
+body {
+	background: #333;
+}
+
+
+#title {
+	color: #fff;
+	text-align: center;
+}
+
+.image {
+	width: 70%;
+	margin-left: 15%;
+}
+
+.textSpace {
+	width: 70%;
+	margin-left: 15%;
+	background: #111;
+	color: #fff;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+a {
+	color: rgb(72, 240, 255);
+}
