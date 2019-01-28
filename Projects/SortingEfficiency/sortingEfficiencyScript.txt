@@ -1,0 +1,33 @@
+- This is a program I wrote that tests the efficiency of 5 popular sorting algorithms
+- The program can use a sample of 10 or 10 000 numbers which are read from text files in order to have consistancy when comparing algorithms
+
+-There are 5 algorithms available
+   the bubble, selection, insertion, merge, and quiksort
+
+- you can choose to sort the numbers in assending or decending order
+
+
+----------------------BUBBLE SORT---------------
+- start sorting 10000 with bubble sort, bubble sort is one of the least efficient algorithms for sorting completely random numbers, and is not very practical
+- The bubble sort has a Big-O-Efficiency of O(n^2)
+
+
+
+----------------------QUIKSORT---------------------
+- start sorting 10000 with quiksort, 
+- quiksort is a very popular sorting algorithm that is currently one of the fastest out there
+- it has a Big-O-Notation of O(n log n)
+
+---------------------MERGESORT---------------------
+- Merge sort also has a Big-O-Notation of O(n log n) but is better suited for very very large scale sorting
+- Merge sort is also a stable sort and is better suited for slow-to-access media
+
+
+
+- The display rate is not an accurate reflection of the total sorting time of an algorthm because of the time it takes to render the numbers on the screen in html
+
+- The Efficiency results page is a much more accurate depiction of an algorithm's effectiveness because it displays the time taken to sort accurately down to a nanosecond and also shows the number of loops taken to sort the numbers.
+
+- The links to download the runnable jar file and project file for this program are available below if you would like to test this yourself.
+
+- Feel free to change the numbers in each file to test the algorithms on new data

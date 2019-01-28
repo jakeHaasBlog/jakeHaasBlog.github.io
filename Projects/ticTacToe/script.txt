@@ -1,0 +1,21 @@
+
+
+I made this tic-tac-toe program using a Java swing JFrame and an overwritten paint component method.
+
+the game features a two player mode and a single player mode in which a simple set of logistic rules will attempt to win a game against you.
+
+in two player mode the first piece placement is always an X and the piece alternates every placement.
+
+when a player wins the score is shown and will be stored for the remainder of the session.
+
+clicking the reset button will reset the board, but will not reset the score
+
+when the board is full with no winners a draw is called and neither player recieves added score.
+
+The "AI" has three difficulty settings, easy, medium and hard. The easy A.I places pieces at random.
+
+the medium difficulty A.I has a 70% chance of playing the perfect move every turn
+
+the hard A.I plays the determined best move every turn and should not be possible to win against.s
+
+If you would like to play this game yourself there is a download link for the runnable jar file below, and if you would like to examine the code behind this game there is also a download link to the project file below

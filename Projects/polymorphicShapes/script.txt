@@ -1,0 +1,31 @@
+
+I created this project using a Java Swing JFrame and JPanel with an overwritten paint 
+component method.
+
+
+this project was developed to test and show my understanding of polymorphism and by extension inheritence in Java 
+
+The base abstract class of every shape is Abstract shape, this class holds a vertex buffer of every vertex in the shape, and methods for updating movement and calculating the various properties of the shape. It also handles the rendering of the shape when given a graphics context.
+
+There are three concrete classes which inherit from Abstract shape:
+- Polygon
+- Rectangle
+- Circle
+
+Polygons are randomly generated shapes with a random number of points at random intervals and distances from the shape's center
+
+Rectangles are generated with a random width and height while maintaining 90 degree corners
+
+Circles are generated with a random number of vertexes at a calculated fixed interval and are rendered with a perfectly circular outline surrounding the generated shape
+
+Gravitation points also move around the screen and have a screen wrap
+
+Shapes have a random initial velocity and are attracted to gravitation points using physics equations for gravitational force, they also have a screen wrap from 500 pixels off the screen in any direction
+
+This program doesn't fulfill any real purpose but acts as a demonstration of my knowlege and as a piece of abstract art.
+
+
+
+If you would like to download and test this program yourself there is a link to the jar file below.
+If you wold like to review the project files and code there is also a link to the project file below.
+

@@ -1,0 +1,36 @@
+I made this program for the CEO of County Chevrolet in the town of Essex, Jeff Smith.
+
+Many new cars use glass matte batteries, this technology is capable of holding more power for a longer durration of time.
+
+The issue with these new types of batteries is that they are unable to be recharged after being fully depleated, unlike the traditional led acid batteries.
+
+Because of this, many of the cars sitting out on the lot which were not being charged 
+regularly were in need of replacment batteries. This was costing the dealership thousands of dollars.
+
+In order to solve this problem I created a demo program to present to Jeff Smith. After consulting with him and recieving input on how the program should be changed to better suit his needs I remade the program into what you're seeing in front of you right now.
+
+There are four menus: The add car menu, view all cars menu, view due cars menu, and the search car history menu.
+
+To add a car to the system simply input the carID, and the date the car was last charged,
+you can also click "set to today" which will automatically input today's date.
+
+Giving an incorrect input such as a car that is already added to the system or an 
+impossible date will give you an error message and will not add the car.
+
+In the view all cars menu you can see an overview of every car in the system and the days left until they require to be charged(cars must be charged once every 30 days).
+
+The view due cars menu only shows cars which are already due to be charged or are within 3 days of being due.
+
+cars can be recharged by simply typing the carID in the bottom and clicking reset.
+They can also be removed in similar fashion.
+
+The search car history menu gives you the ability to search the charge history of any car in the system. It shows the dates charged and the time that was left between the next charge due date for every logged charge in it's history.
+
+Every car is held in a file system which is saved automatically any time there are changes to any car's data or history
+
+If you would like to download and test this project yourself there is a link to the Jar file below, there is also a link to the project file if you would like to review the code driving this program yourself.
+
+
+
+
+

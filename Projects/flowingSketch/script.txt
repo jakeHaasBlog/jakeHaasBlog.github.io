@@ -1,0 +1,19 @@
+This program was made using C++, it is meant as a demonstration of my knowlege of C++ and can be considered interactive art.
+
+C++ does not have internal support for graphics and In order to make a graphical application I am using SDL, the Simple Direct Media Layer. Which is a very common library used to make C++ graphics. It also handles mouse events and keybard events.
+
+When the program starts you are greeted with a the command prompt which takes your input for how you would like the program to begin, changing these variables can give you a wide variety of different results.
+
+Entering an invalid input will result in the prompt repeating the question untill a valid input is given
+
+
+When the program begins you will notice a trail of lines following the target, for 
+this demonstration the target has been illuminated in red. 
+
+Pressing the W, A, S, and D keys will move the target around the screen, the balls on the screen will then try to follow the target and produce designs on the screen.
+
+The mouse can also be used to direct the target and produce different results.
+If your display is touch screen the target will also follow the direction of your finger when dragged across the screen.
+
+There are more examples of designs which have been made using this program below and if you would like to test this program yourself there are also links to the .exe file and the visual studeo project file if you would like to view the code behind this program.
+
