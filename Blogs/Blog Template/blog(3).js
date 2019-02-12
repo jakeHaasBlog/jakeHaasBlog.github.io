@@ -80,7 +80,7 @@ var blog3 = {
 		if (document.getElementById('image1').checked == true){
 			document.getElementById('compImg').src = 'https://product-images.www8-hp.com/digmedialib/prodimg/lowres/c05972398.png';
 		} else {
-			document.getElementById('compImg').src = 'Blog Template/specter-transparent.png';
+			document.getElementById('compImg').src = 'https://zdnet3.cbsistatic.com/hub/i/r/2018/06/22/b7967d8b-7907-452a-93b2-ac7432cc5dfe/resize/570x428/8cff3c172d0550ea1370618ea04c84dc/laptops-best-battery-life-hp-spectre-x360-laptop.png';
 		}
 
 		while (then - new Date().getTime() > frameInterval){
