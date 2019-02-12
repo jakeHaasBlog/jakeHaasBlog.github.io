@@ -83,10 +83,21 @@ var blog3 = {
 			document.getElementById('compImg').src = 'https://zdnet3.cbsistatic.com/hub/i/r/2018/06/22/b7967d8b-7907-452a-93b2-ac7432cc5dfe/resize/570x428/8cff3c172d0550ea1370618ea04c84dc/laptops-best-battery-life-hp-spectre-x360-laptop.png';
 		}
 
-		while (then - new Date().getTime() > frameInterval){
+		console.log("looping...");
+
+		while (new Date().getTime() - then < frameInterval){
 			// do nothing
 		}
+
 		if (currentPageNumber == 3) window.requestAnimationFrame(blog3.loop);
+	},
+
+	radio1Down: function(){
+		document.getElementById('compImg').src = 'https://product-images.www8-hp.com/digmedialib/prodimg/lowres/c05972398.png';
+	},
+
+	radio2Down: function(){
+	    document.getElementById('compImg').src = 'https://zdnet3.cbsistatic.com/hub/i/r/2018/06/22/b7967d8b-7907-452a-93b2-ac7432cc5dfe/resize/570x428/8cff3c172d0550ea1370618ea04c84dc/laptops-best-battery-life-hp-spectre-x360-laptop.png';
 	},
 
 	run: function(){
@@ -96,7 +107,13 @@ var blog3 = {
 		blogspace.style.borderColor = '#bd9d16';
 		blogspace.innerHTML = blog3HTML;
 
-		document.getElementById('image1').checked = true;
+		document.getElementById('image1').onclick = function(){
+			document.getElementById('compImg').src = 'https://product-images.www8-hp.com/digmedialib/prodimg/lowres/c05972398.png';
+		};
+
+		document.getElementById('image2').onclick = function(){
+			document.getElementById('compImg').src = 'https://zdnet3.cbsistatic.com/hub/i/r/2018/06/22/b7967d8b-7907-452a-93b2-ac7432cc5dfe/resize/570x428/8cff3c172d0550ea1370618ea04c84dc/laptops-best-battery-life-hp-spectre-x360-laptop.png';
+		};
 
 		this.loop();
 
