@@ -14,10 +14,43 @@ var graphButton = document.getElementById("graphButton");
 var expr = "x";
 var x;
 
-var minX = 0;
-var minY = canvas.width;
+var viewX = 0;
+var viewY = 0;
 var scaleX = 1;
 var scaleY = 1;
+
+var wDown = false;
+var aDown = false;
+var sDown = false;
+var dDown = false;
+var viewSpeedY = 0;
+var viewSpeedX = 0;
+
+function cameraLogic(){
+	if(wDown) viewSpeedY += 0.3;
+	else if(sDown) viewSpeedY -= 0.3;
+	else {
+		if (viewSpeedY > 0) viewSpeedY -= 0.3;
+		if (viewSpeedY < 0) viewSpeedY += 0.3;
+		if (Math.abs(viewSpeedY) <= 0.5) viewSpeedY = 0;
+	}
+	if (viewSpeedY > 10) viewSpeedY = 10;
+	if (viewSpeedY < -10) viewSpeedY = -10;
+
+	if(dDown) viewSpeedX += 0.3;
+	else if(aDown) viewSpeedX -= 0.3;
+	else {
+		if (viewSpeedX > 0) viewSpeedX -= 0.3;
+		if (viewSpeedX < 0) viewSpeedX += 0.3;
+		if (Math.abs(viewSpeedX) <= 0.5) viewSpeedX = 0;
+	}
+	if (viewSpeedX > 10) viewSpeedX = 10;
+	if (viewSpeedX < -10) viewSpeedX = -10;
+
+
+	viewY += viewSpeedY;
+	viewX += viewSpeedX;
+}
 
 function mainloop(){
 
@@ -29,25 +62,53 @@ function mainloop(){
 
 		frameBegin = Date.now() - (elapsedTime % fpsInterval);
 
-		canvasContext.fillStyle = "#ffffff";
+		canvasContext.fillStyle = "#000000";
 		canvasContext.fillRect(0, 0, 2000, 1600);
-		canvasContext.strokeStyle = '#000000';
+
+		drawGrid();
+
+		canvasContext.strokeStyle = '#aa00ff';
+
+		graph();
+
+		var previousY;
+		var y;
 
 		canvasContext.beginPath();
 		x = 0;
-		canvasContext.moveTo(0, -1*graphAt(0) + canvas.height);
+		y = pixYatGraphY(-1*graphAt(graphXatPixX(0)) + canvas.height);
+		canvasContext.moveTo(0, y);
+		previousY = y;
 		for (var i = 1; i < canvas.width; i++){
 			x = i;
-			canvasContext.lineTo(i, -1*graphAt(i) + canvas.height);
+			y = pixYatGraphY(-1*graphAt(graphXatPixX(i)) + canvas.height);
+			canvasContext.lineTo(i, y);
+			previousY = pixYatGraphY(-1*graphAt(graphXatPixX(i)) + canvas.height);
 		}
 		canvasContext.stroke();
 
 		canvasContext.fillStyle = '#000000';
+
 		drawUnits();
 
 	}
 
+	cameraLogic();
+
 }
+
+function graphXatPixX(x){
+	return (x+viewX) * scaleX;
+}
+
+function graphYatPixY(y){
+	return (y+viewY);
+}
+
+function pixYatGraphY(y){
+	return (y+viewY) * scaleY;
+}
+
 
 function graph(){
 	expr = equationField.value;
@@ -60,12 +121,75 @@ function graphAt(x){
 }
 
 function drawUnits(){
-	canvasContext.font = "30px Arial";
+
+	canvasContext.font = "10px Arial";
+	canvasContext.fillStyle = '#ffffff';
+	var x = 0;
 	for (var i = 0; i < 10; i++){
-		canvasContext.fillText(minX + (i * (canvas.width / 10)) * scaleX, (i * (canvas.width / 10)) * 50, canvas.height - 50);
+		canvasContext.fillText(Math.round((i*(canvas.width/10)+viewX)*scaleX), x, canvas.height-5);
+		x += canvas.width / 10;
+	}
+	var y = canvas.height;
+	for (var i = 0; i < 10; i++){
+		canvasContext.fillText(Math.round((i*(canvas.height/10)+viewY)*scaleY), 5, y);
+		y -= canvas.height / 10;
+	}
+
+}
+
+function drawGrid(){
+	var x = 0;
+	for (var i = 0; i < 10; i++){
+		x += canvas.width / 10;
+		canvasContext.strokeStyle = '#111111';
+		canvasContext.beginPath();
+		canvasContext.moveTo(x, 0);
+		canvasContext.lineTo(x, canvas.height);
+		canvasContext.stroke();
+	}
+	var y = canvas.height;
+	for (var i = 0; i < 10; i++){
+		y -= canvas.height / 10;
+		canvasContext.strokeStyle = '#111111';
+		canvasContext.beginPath();
+		canvasContext.moveTo(0, y);
+		canvasContext.lineTo(canvas.width, y);
+		canvasContext.stroke();
 	}
 }
 
-graphButton.onclick = graph;
+document.addEventListener('keydown', function(event){
+	if (event.key == 'd'){
+		dDown = true;
+	} else if (event.key == 'a'){
+		aDown = true;
+	} else if (event.key == 'w'){
+		wDown = true;
+	} else if (event.key == 's'){
+		sDown = true;
+	}
+
+	if (event.key == '['){
+		scaleX -= 0.001;
+	} else if (event.key == '{'){
+		scaleY -= 0.001;
+	}
+	if (event.key == ']'){
+		scaleX += 0.001;
+	} else if (event.key == '}'){
+		scaleY += 0.001;
+	}
+});
+document.addEventListener('keyup', function(event){
+	if (event.key == 'd'){
+		dDown = false;
+	} else if (event.key == 'a'){
+		aDown = false;
+	} else if (event.key == 'w'){
+		wDown = false;
+	} else if (event.key == 's'){
+		sDown = false;
+	}
+});
 
 window.requestAnimationFrame(mainloop);
