@@ -141,7 +141,7 @@ function drawGrid(){
 	var x = 0;
 	for (var i = 0; i < 10; i++){
 		x += canvas.width / 10;
-		canvasContext.strokeStyle = '#111111';
+		canvasContext.strokeStyle = '#333333';
 		canvasContext.beginPath();
 		canvasContext.moveTo(x, 0);
 		canvasContext.lineTo(x, canvas.height);
@@ -150,7 +150,7 @@ function drawGrid(){
 	var y = canvas.height;
 	for (var i = 0; i < 10; i++){
 		y -= canvas.height / 10;
-		canvasContext.strokeStyle = '#111111';
+		canvasContext.strokeStyle = '#333333';
 		canvasContext.beginPath();
 		canvasContext.moveTo(0, y);
 		canvasContext.lineTo(canvas.width, y);
