@@ -10,30 +10,6 @@ var canvasHeight = 2000;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 
-// // // // // // // // a star fractal *
-
-// var lineLength = 80;
-// var lineWeight = 1;
-// var lineChange = 0;
-// var lineR = 255;
-// var redChange = 0;
-// var lineG = 0;
-// var greenChange = 0;
-// var lineB = 255;
-// var blueChange = 0;
-// var angle = 1.9;
-// var lineAngleChange = 0;
-// var branches = 2;
-// var branchesChange = 0;
-// var itterations = 10;
-
-// var backgroundR = 0;
-// var backgroundG = 0;
-// var backgroundB = 0;
-// var backgroundA = 255;
-
-// var seedBranches = 8;
-
 var lineLength = 100;
 var lineWeight = 1;
 var lineChange = 0;
@@ -55,6 +31,33 @@ var backgroundB = 0;
 var backgroundA = 255;
 
 var seedBranches = 10;
+
+
+
+var marco = function(x, y, z){
+	alert(x + y + z);
+}
+
+marco("Ryan ", "is a ", "nerd");
+
+
+
+var ryan = function(){
+
+	this.x = 90;
+	this.y = 7;
+
+	this.dothing = function(){
+		alert("cats are life... batman");
+	};
+
+};
+
+
+ryan.dothing();
+
+
+
 
 var defaultButton = document.getElementById("defaults");
 defaultButton.addEventListener("click", defaults);
@@ -165,3 +168,5 @@ function makeBranch(x, y, r, g, b, length, startAngle, angleChange, branches, it
 		}
 	}
 }
+
+
