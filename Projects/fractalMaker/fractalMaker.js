@@ -33,32 +33,6 @@ var backgroundA = 255;
 var seedBranches = 10;
 
 
-
-var marco = function(x, y, z){
-	alert(x + y + z);
-}
-
-marco("Ryan ", "is a ", "nerd");
-
-
-
-var ryan = function(){
-
-	this.x = 90;
-	this.y = 7;
-
-	this.dothing = function(){
-		alert("cats are life... batman");
-	};
-
-};
-
-
-ryan.dothing();
-
-
-
-
 var defaultButton = document.getElementById("defaults");
 defaultButton.addEventListener("click", defaults);
 
