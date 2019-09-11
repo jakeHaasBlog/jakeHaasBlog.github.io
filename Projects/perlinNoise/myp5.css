@@ -87,3 +87,16 @@ button {
 #generate {
 	margin-left: 2%;
 }
+
+.showAnimDiv {
+	display: block;
+	margin-top: 80px;
+	background: #111;
+	width: 160px;
+	height: 60px;
+	color: #fff;
+}
+
+#percentComplete {
+	color: #fff;
+}

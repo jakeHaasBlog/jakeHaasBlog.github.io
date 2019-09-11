@@ -40,6 +40,8 @@ var currentSeed = 1;
 
 var balls = new Array();
 
+var percentComplete = 0.0;
+
 function perColor(x, y){
 
 	var ballRstr = document.getElementById("rInput").value;
@@ -148,6 +150,7 @@ class Ball{
 
 		this.x += Math.cos(this.direction)*this.velocity;
 		this.y += Math.sin(this.direction)*this.velocity;
+
 		stroke(this.col);
 		fill(this.col);
 		strokeWeight(lineWeight);
@@ -192,29 +195,50 @@ var x2;
 var y2;
 var itter = 0;
 function draw(){
-	itter++;
-	if (itter < timeDrawing){
-		for (var i = 0; i < balls.length; i++){
-			if (balls[i].deleteOffScreen()){
-				balls.splice(i, 1);
+	if (document.getElementById("showAnimBox").checked){
+		itter++;
+		if (itter < timeDrawing){
+			for (var i = 0; i < balls.length; i++){
+				if (balls[i].deleteOffScreen()){
+					balls.splice(i, 1);
+					i--;
+				}
+			}
+			for (var i = 0; i < balls.length; i++){
+				balls[i].update();
+			}
+
+			document.getElementById("percentComplete").innerHTML = ((itter / timeDrawing) * 100) + "%";
+		}
+
+		for (var i = 0; i < mouseBalls.length; i++){
+			if (mouseBalls[i].deleteOffScreen()){
+				mouseBalls.splice(i, 1);
 				i--;
 			}
 		}
-		for (var i = 0; i < balls.length; i++){
-			balls[i].update();
-		}
-	}
 
-	for (var i = 0; i < mouseBalls.length; i++){
-		if (mouseBalls[i].deleteOffScreen()){
-			mouseBalls.splice(i, 1);
-			i--;
+		for (var i = 0; i < mouseBalls.length; i++){
+			mouseBalls[i].update();
 		}
+
+	} else {
+		while (itter < timeDrawing){
+			itter++;
+			for (var i = 0; i < balls.length; i++){
+				if (balls[i].deleteOffScreen()){
+					balls.splice(i, 1);
+					i--;
+				}
+			}
+			for (var i = 0; i < balls.length; i++){
+				balls[i].update();
+			}
+
+			document.getElementById("percentComplete").innerHTML = ((itter / timeDrawing) * 100) + "%";
+		}
+
 	}
-	for (var i = 0; i < mouseBalls.length; i++){
-		mouseBalls[i].update();
-	}
-	
 
 }
 
@@ -287,6 +311,9 @@ function setToDefaults(){
 
 	document.getElementById("octavesInput").value = 10;
 	document.getElementById("dropoffInput").value = 0.02;
+
+	document.getElementById("showAnimBox").checked = true;
+
 }
 
 function setNewSeed(){
