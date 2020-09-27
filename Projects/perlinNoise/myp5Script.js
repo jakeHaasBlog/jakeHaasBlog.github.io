@@ -10,7 +10,7 @@
 // var lineWeight = 20;
 // var lineLength = 30;
 
-// default referance
+// default reference
 
 
 var widthTextField = document.getElementById("widthInput");
@@ -265,8 +265,8 @@ function generateNewCanvas(){
 	backg = parseInt(document.getElementById("backgInput").value);
 	backb = parseInt(document.getElementById("backbInput").value);
 
-	noiseDetail1 = parseInt(document.getElementById("octavesInput").value);
-	noiseDetail2 = parseInt(document.getElementById("dropoffInput").value);
+	noiseDetail1 = parseFloat(document.getElementById("octavesInput").value);
+	noiseDetail2 = parseFloat(document.getElementById("dropoffInput").value);
 
 	mouseBalls = [];
 	balls = [];
